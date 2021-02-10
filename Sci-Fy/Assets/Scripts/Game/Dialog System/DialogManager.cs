@@ -9,27 +9,27 @@ namespace Game.DialogSystem
     {
         #region Dialog behaviour
         public Sentence CurrentSentence { get; private set; }
-        private Dialog m_currentDialog;
-        private Queue<Sentence> m_sentenceQueue = new Queue<Sentence>();
+        private Dialog _currentDialog;
+        private Queue<Sentence> _sentenceQueue = new Queue<Sentence>();
         #endregion
 
         #region DialogManager Events
-        [SerializeField] UnityEvent OnSaySentence;
+        public UnityEvent OnSaySentence;
 
 
-        [SerializeField] UnityEvent OnDialogStart;
+        public UnityEvent OnDialogStart;
 
-        [SerializeField] UnityEvent OnDialogEnd;
+        public UnityEvent OnDialogEnd;
         #endregion
 
         public void SetNewDialog(Dialog newDialog)
         {
-            m_currentDialog = newDialog;
+            _currentDialog = newDialog;
 
-            m_sentenceQueue = EnqueSentence(m_currentDialog);
+            _sentenceQueue = EnqueSentence(_currentDialog);
 
-            m_currentDialog.OnDialogStart.Invoke();
-            OnDialogStart?.Invoke();
+            _currentDialog.OnDialogStart.Invoke();
+            OnDialogStart.Invoke();
 
             SayNextSentence();
         }
@@ -44,16 +44,16 @@ namespace Game.DialogSystem
 
         public void SayNextSentence()
         {
-            if (m_currentDialog == null)
+            if (_currentDialog == null)
                 return;
 
-            if (m_sentenceQueue.Count == 0)
+            if (_sentenceQueue.Count == 0)
             {
                 EndConversation();
                 return;
             }
 
-            CurrentSentence = m_sentenceQueue.Dequeue();
+            CurrentSentence = _sentenceQueue.Dequeue();
             
             OnSaySentence?.Invoke();
         }
@@ -62,7 +62,7 @@ namespace Game.DialogSystem
         {
             Queue<Sentence> sentenceQueueInstance = new Queue<Sentence>();
 
-            foreach (Sentence sentence in m_currentDialog.Sentences)
+            foreach (Sentence sentence in _currentDialog.Sentences)
             {
                 sentenceQueueInstance.Enqueue(sentence);
             }
@@ -72,10 +72,10 @@ namespace Game.DialogSystem
 
         public void EndConversation()
         {
-            m_currentDialog.OnDialogEnd.Invoke();
-            m_currentDialog = null;
+            _currentDialog.OnDialogEnd.Invoke();
+            _currentDialog = null;
 
-            OnDialogEnd?.Invoke();
+            OnDialogEnd.Invoke();
         }
     }
 }

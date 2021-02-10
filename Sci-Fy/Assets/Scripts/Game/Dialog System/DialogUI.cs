@@ -7,21 +7,41 @@ namespace Game.DialogSystem
 {
     public class DialogUI : MonoBehaviour
     {
-        [SerializeField] private DialogManager m_dialogManager;
-        [SerializeField] private Text m_characterName;
-        [SerializeField] private Text m_sentenceBody;
+        [SerializeField] private DialogManager _dialogManager;
+        [SerializeField] private Text _characterName;
+        [SerializeField] private Text _sentenceBody;
 
         private void Awake()
         {
-            if(m_dialogManager == null)
-                m_dialogManager = GetComponentInParent<DialogManager>();
+            if(_dialogManager == null)
+                _dialogManager = GetComponentInParent<DialogManager>();
+        }
+
+        private void OnEnable()
+        {
+            if (_dialogManager == null)
+                return;
+
+            _dialogManager.OnDialogStart.AddListener(ShowDialog);
+            _dialogManager.OnDialogEnd.AddListener(HideDialog);
+            _dialogManager.OnSaySentence.AddListener(UpdateDialogUI);
+        }
+
+        private void OnDisable()
+        {
+            if (_dialogManager == null)
+                return;
+
+            _dialogManager.OnDialogStart.RemoveListener(ShowDialog);
+            _dialogManager.OnDialogEnd.RemoveListener(HideDialog);
+            _dialogManager.OnSaySentence.RemoveListener(UpdateDialogUI);
         }
 
         public void UpdateDialogUI()
         {
-            m_characterName.text = m_dialogManager.CurrentSentence.Character;
+            _characterName.text = _dialogManager.CurrentSentence.Character;
 
-            StartCoroutine(ShowBodySentenceLetterByLetter(m_dialogManager.CurrentSentence.Body));
+            StartCoroutine(ShowBodySentenceLetterByLetter(_dialogManager.CurrentSentence.Body));
         }
 
         IEnumerator ShowBodySentenceLetterByLetter(string bodyText)
@@ -31,9 +51,13 @@ namespace Game.DialogSystem
             foreach(char letter in bodyText)
             {
                 body += letter;
-                m_sentenceBody.text = body;
+                _sentenceBody.text = body;
                 yield return null;
             }
         }
+
+        //TODO: Make an animation!
+        private void ShowDialog() => gameObject.SetActive(true);
+        private void HideDialog() => gameObject.SetActive(false);
     }
 }
