@@ -3,30 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.StateMachine;
 
-public class PlayerController : MonoBehaviour, ISetState<PlayerController>
+public class PlayerController : MonoBehaviour
 {
-    #region PlayerStates
-    private IState<PlayerController> _currentState;
+    #region Player State Machine
+    public StateMachine<PlayerController> StateMachine;
     public PlayerIdleState IdleState = new PlayerIdleState();
     public PlayerMovingState MovingState = new PlayerMovingState();
+    #endregion
+
+    #region CharacterController
+    private CharacterController2D _characterController;
+    public CharacterController2D CharacterController
+    {
+        get
+        {
+            if (_characterController == null)
+                return null;
+            return _characterController;
+        }
+        private set 
+        {
+            _characterController = value;
+        }
+    }
+
+    [HideInInspector] public Rigidbody2D Rigidbody { get; private set; }
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        SetState(IdleState);
+        StateMachine = new StateMachine<PlayerController>();
+        CharacterController = GetComponent<CharacterController2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
+        
+        StateMachine.SetState(IdleState);
     }
 
     // Update is called once per frame
     void Update()
     {
-        _currentState.TickState(this);
-    }
-
-    public void SetState(IState<PlayerController> newState)
-    {
-        _currentState?.ExitState(this);
-        _currentState = newState;
-        _currentState.EnterState(this);
+        StateMachine.CurrentState.TickState(this);
     }
 }
