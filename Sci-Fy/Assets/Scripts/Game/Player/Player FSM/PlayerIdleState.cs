@@ -8,7 +8,7 @@ public class PlayerIdleState : IState<PlayerController>
 
     public void EnterState(PlayerController player)
     {
-
+        Debug.LogWarning("Entering idle state!");
     }
 
     public void ExitState(PlayerController player)
@@ -22,11 +22,7 @@ public class PlayerIdleState : IState<PlayerController>
 
         if (player.Rigidbody.velocity.magnitude > 0.1f)
         {
-           Debug.Log("Is not stopped... meaning is walking");
-        }
-        else
-        {
-            Debug.LogWarning("Is stopped!");
+            player.StateMachine.SetState(player.MovingState);
         }
     }
 }

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.StateMachine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Character<PlayerController>
 {
     #region Player State Machine
-    public StateMachine<PlayerController> StateMachine;
     public PlayerIdleState IdleState = new PlayerIdleState();
     public PlayerMovingState MovingState = new PlayerMovingState();
     #endregion
@@ -31,9 +30,10 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        StateMachine = new StateMachine<PlayerController>();
+        base.Start();
+
         CharacterController = GetComponent<CharacterController2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         
