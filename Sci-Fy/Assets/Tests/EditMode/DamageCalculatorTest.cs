@@ -12,19 +12,17 @@ namespace Tests
         [Test]
         public void DamageCalculatorTestSimplePasses()
         {
-            GameObject obj = new GameObject("Obj");
-
-            Damageable damageable = obj.AddComponent<Damageable>();
+            Damageable damageable = new Damageable();
             
             damageable.Team = DamageSourceTeam.Friendly;
             damageable.SetHealth(100f);
-            damageable.SetArmor(5f);
+            damageable.SetArmor(30f);
 
             damageable.TakeDamage(10f, DamageSourceTeam.Enemy);
 
             float health = damageable.CurrentHealth;
 
-            Assert.AreEqual(95f, health);
+            Assert.AreEqual(99f, health);
         }
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use

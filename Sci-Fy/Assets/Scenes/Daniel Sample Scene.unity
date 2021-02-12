@@ -730,7 +730,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1156336368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,9 +755,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5ef54866d90e740a671a5eaf1c6ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _team: 0
+  Team: 0
   _startHealth: 100
-  _armor: 30
+  _startArmor: 30
   OnDead:
     m_PersistentCalls:
       m_Calls: []

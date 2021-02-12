@@ -13,7 +13,7 @@ public class Damageable : MonoBehaviour
     #region Stats Info
     [Header("Stats")]
     [SerializeField, Range(0, 100)] private float _startHealth = 100f;
-    [SerializeField, Range(0, 100)] private float _armor = 30f;
+    [SerializeField, Range(0, 100)] private float _startArmor = 30f;
     public float CurrentHealth { get; private set; }
     public float CurrentArmor { get; private set; }
     public bool Invulnerable { get; private set; }
@@ -25,6 +25,7 @@ public class Damageable : MonoBehaviour
     private void Start()
     {
         CurrentHealth = _startHealth;
+        CurrentArmor = _startArmor;
     }
 
     public void SetArmor(float armor)
