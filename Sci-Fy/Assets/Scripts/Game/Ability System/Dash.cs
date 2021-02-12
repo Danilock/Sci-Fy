@@ -22,13 +22,6 @@ namespace Game.Ability
             _damageable = GetComponent<Damageable>();
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                TriggerAbility();
-            }
-        }
         public override void Ability()
         {
             _damageable.SetInvulnerableByXSeconds(2f);
