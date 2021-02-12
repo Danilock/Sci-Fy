@@ -4,19 +4,22 @@ using UnityEngine;
 
 namespace Game.Ability
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(Damageable))]
     public class Dash : BaseAbility
     {
         [Header("Dash")]
         [SerializeField, Range(0, 2500)] float _force;
-        [SerializeField] Sprite _characterSprite;
-        Rigidbody2D _characterRgb;
-        CharacterController2D _characterController;
+        [SerializeField, Tooltip("Shadows that will appear when dashing")] Sprite _shadow;
 
-        private void Start()
+        private Rigidbody2D _rgb;
+        private CharacterController2D _characterController;
+        private Damageable _damageable;
+
+        private void Awake()
         {
-            _characterRgb = GetComponent<Rigidbody2D>();
+            _rgb = GetComponent<Rigidbody2D>();
             _characterController = GetComponent<CharacterController2D>();
+            _damageable = GetComponent<Damageable>();
         }
 
         private void Update()
@@ -28,8 +31,10 @@ namespace Game.Ability
         }
         public override void Ability()
         {
+            _damageable.SetInvulnerableByXSeconds(2f);
+
             StartCoroutine(HandleCharacterController());
-            _characterRgb.AddForce(Vector2.right * CalculateCharacterDirection() * _force, ForceMode2D.Impulse);
+            _rgb.AddForce(Vector2.right * CalculateCharacterDirection() * _force, ForceMode2D.Impulse);
             StartCoroutine(FadeEffect());
         }
 
@@ -42,6 +47,11 @@ namespace Game.Ability
             _characterController.CanMove = true;
         }
 
+        /// <summary>
+        /// instantiate 10 shadows in the position of the character to produce a shadow effect
+        /// while doing the dash.
+        /// </summary>
+        /// <returns></returns>
         IEnumerator FadeEffect()
         {
             int i = 0;
@@ -55,12 +65,12 @@ namespace Game.Ability
 
                 SpriteRenderer fadeSprite = fadeObj.AddComponent<SpriteRenderer>();
 
-                fadeSprite.sprite = _characterSprite;
+                fadeSprite.sprite = _shadow;
                 fadeSprite.color = Color.white * .5f;
 
                 i++;
 
-                Destroy(fadeObj, 1f);
+                Destroy(fadeObj, .5f);
                 yield return new WaitForSeconds(.05f);
             }
         }

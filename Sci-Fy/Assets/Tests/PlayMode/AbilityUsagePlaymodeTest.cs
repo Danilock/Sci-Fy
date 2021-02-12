@@ -23,6 +23,10 @@ namespace Tests
         {
             GameObject playerObj = new GameObject("Player");
 
+            Rigidbody2D rgb = playerObj.AddComponent<Rigidbody2D>();
+            CharacterController2D ch2D = playerObj.AddComponent<CharacterController2D>();
+            Damageable dmg = playerObj.AddComponent<Damageable>();
+
             Dash dash = playerObj.AddComponent<Dash>();
             dash.SetCooldown(3f);
             dash.TriggerAbility();

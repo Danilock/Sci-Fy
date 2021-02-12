@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Damageable : MonoBehaviour
 {
     [Header("Team")]
-    [SerializeField] DamageSourceTeam _team;
+    public DamageSourceTeam Team;
     [Space]
 
     #region Stats Info
@@ -32,22 +32,39 @@ public class Damageable : MonoBehaviour
         CurrentArmor = armor;
     }
 
-    public void SetLife(float life)
+    public void SetHealth(float life)
     {
         CurrentHealth = life;
     }
 
     public void TakeDamage(float damageAmount, DamageSourceTeam SourceTeam)
     {
-        if (Invulnerable || SourceTeam == _team)
+        if (Invulnerable || SourceTeam == Team)
             return;
 
-        CurrentHealth -= (damageAmount - _armor);
+        CurrentHealth -= CalculateDamageByArmor(damageAmount, CurrentArmor);
 
         if(CurrentHealth <= 0f)
         {
             OnDead.Invoke();
         }
+    }
+
+    float CalculateDamageByArmor(float damage, float armor)
+    {
+        if (armor > damage)
+            return 1f;
+        else
+            return damage - armor;
+    }
+
+    public void SetInvulnerableByXSeconds(float seconds) => StartCoroutine(Invulnerability(seconds));
+
+    IEnumerator Invulnerability(float seconds)
+    {
+        Invulnerable = true;
+        yield return new WaitForSeconds(seconds);
+        Invulnerable = false;
     }
 }
 
