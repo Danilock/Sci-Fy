@@ -7,7 +7,7 @@ public class PlayerMovingState : IState<PlayerController>
 {
     public void EnterState(PlayerController player)
     {
-        Debug.Log("Enter moving state");
+
     }
 
     public void ExitState(PlayerController player)
@@ -22,6 +22,14 @@ public class PlayerMovingState : IState<PlayerController>
         if (player.Rigidbody.velocity.magnitude < 0.01f)
         {
             player.StateMachine.SetState(player.IdleState);
+        }
+        else if (Input.GetButtonDown("Jump"))
+        {
+            player.CharacterController.Move(
+                Input.GetAxisRaw("Horizontal"), 
+                false, 
+                true
+                );
         }
     }
 }
