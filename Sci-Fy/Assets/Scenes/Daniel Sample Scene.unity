@@ -653,7 +653,8 @@ MonoBehaviour:
   Icon: {fileID: 0}
   _cooldown: 1
   _canUse: 1
-  img: {fileID: 21300000, guid: 909a737a46f19c045950a21a6f13243e, type: 3}
+  _force: 15
+  _characterSprite: {fileID: 21300000, guid: 921067b8f32c5f941af456db84a95236, type: 3}
 --- !u!1 &1174089020
 GameObject:
   m_ObjectHideFlags: 0
