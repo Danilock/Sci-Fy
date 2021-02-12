@@ -32,6 +32,19 @@ public class CharacterController2D : MonoBehaviour
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
+	private bool _canMove = true;
+	public bool CanMove
+    {
+        get
+        {
+			return _canMove;
+        }
+        set
+        {
+			_canMove = value;
+        }
+    }
+
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -65,6 +78,9 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump)
 	{
+		if (!_canMove)
+			return;
+
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
 		{
