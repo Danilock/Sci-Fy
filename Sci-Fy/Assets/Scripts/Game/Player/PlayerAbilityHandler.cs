@@ -67,7 +67,7 @@ public class PlayerAbilityHandler : MonoBehaviour
     void HandleMeleeAttack()
     {
         //TODO: Actually, what this needs to do is call the animator and then
-        //set the Start attack method in the animation as an event.
+        //set the Start attack method in the animation as an event
         if (CheckIfPlayerIsInIdleOrWalkState())
             _meleeWeapon.StartAttack();
     }
