@@ -7,7 +7,7 @@ namespace Game.Ability
     [RequireComponent(typeof(Rigidbody2D), typeof(Damageable))]
     public class Dash : BaseAbility
     {
-        [Header("Dash")]
+        [Header("Dash Attributes")]
         [SerializeField, Range(0, 2500)] float _force;
         [SerializeField, Tooltip("Shadows that will appear when dashing")] Sprite _shadow;
 

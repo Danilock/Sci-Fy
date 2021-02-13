@@ -453,9 +453,10 @@ GameObject:
   - component: {fileID: 899404119}
   - component: {fileID: 899404118}
   - component: {fileID: 899404117}
-  m_Layer: 0
+  - component: {fileID: 899404121}
+  m_Layer: 9
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -565,6 +566,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &899404121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899404116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5ef54866d90e740a671a5eaf1c6ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: 1
+  _startHealth: 10
+  _startArmor: 0
+  OnDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 899404116}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1156336362
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,6 +613,7 @@ GameObject:
   - component: {fileID: 1156336369}
   - component: {fileID: 1156336370}
   - component: {fileID: 1156336371}
+  - component: {fileID: 1156336372}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -793,6 +825,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canUseAbilities: 1
+--- !u!114 &1156336372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156336362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e38bb43ca1f7464493bb8bbf7553c93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 'Laser '
+  Icon: {fileID: 0}
+  _cooldown: 3
+  _canUse: 1
+  _laserEndDistance: 8
+  _laserDamage: 5
+  _laserOwnerTeam: 0
+  _damageLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  _attackForce: 0
 --- !u!1 &1174089020
 GameObject:
   m_ObjectHideFlags: 0
