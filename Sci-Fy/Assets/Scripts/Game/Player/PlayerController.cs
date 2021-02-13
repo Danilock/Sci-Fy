@@ -8,7 +8,6 @@ public class PlayerController : Character<PlayerController>
     #region Player State Machine
     public PlayerIdleState IdleState = new PlayerIdleState();
     public PlayerMovingState MovingState = new PlayerMovingState();
-    public PlayerJumpState JumpState = new PlayerJumpState();
     #endregion
 
     #region CharacterController
@@ -45,6 +44,5 @@ public class PlayerController : Character<PlayerController>
     void Update()
     {
         StateMachine.CurrentState.TickState(this);
-        Debug.Log(StateMachine.CurrentState);
     }
 }

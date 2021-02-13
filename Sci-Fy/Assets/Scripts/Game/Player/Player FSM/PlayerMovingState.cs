@@ -7,7 +7,7 @@ public class PlayerMovingState : IState<PlayerController>
 {
     public void EnterState(PlayerController player)
     {
-        
+
     }
 
     public void ExitState(PlayerController player)
@@ -30,7 +30,6 @@ public class PlayerMovingState : IState<PlayerController>
                 false, 
                 true
                 );
-            player.StateMachine.SetState(player.JumpState);
         }
     }
 }
