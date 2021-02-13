@@ -16,7 +16,7 @@ TagManager:
   - 
   - Player
   - Enemy
-  - 
+  - Minimap Element
   - 
   - 
   - 
@@ -41,4 +41,28 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1135272389
+    locked: 0
+  - name: Decorations Behind Environment
+    uniqueID: 1635158931
+    locked: 0
+  - name: Environment
+    uniqueID: 3013075739
+    locked: 0
+  - name: Decorations Above Environment
+    uniqueID: 843304827
+    locked: 0
+  - name: UI World Space
+    uniqueID: 4182886289
+    locked: 0
+  - name: Characters
+    uniqueID: 3423787535
+    locked: 0
+  - name: Environment Above Characters
+    uniqueID: 3692740411
+    locked: 0
+  - name: UI
+    uniqueID: 1239347563
     locked: 0
