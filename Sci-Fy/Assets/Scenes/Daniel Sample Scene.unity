@@ -267,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 581487715}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceilling Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 618298661}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,11 +709,10 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 567
   m_GroundCheck: {fileID: 618298661}
   m_CeilingCheck: {fileID: 581487715}
   m_CrouchDisableCollider: {fileID: 0}
-  m_Grounded: 1
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []

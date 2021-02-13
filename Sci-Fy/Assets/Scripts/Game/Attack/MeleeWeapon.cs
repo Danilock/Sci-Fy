@@ -14,6 +14,10 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] private DamageSourceTeam _sourceTeam;
     [SerializeField] private AttackForce _force;
 
+    /// <summary>
+    /// It's important to first specify the owner of the melee weapon before triggering
+    /// the attack.
+    /// </summary>
     [SerializeField] private GameObject _weaponOwner;
 
     public bool UseMeleeAttack { get; private set; }

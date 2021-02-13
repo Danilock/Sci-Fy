@@ -48,15 +48,13 @@ public class PlayerAbilityHandler : MonoBehaviour
         }
         else if(Input.GetButtonDown("Melee Attack"))
         {
-            //TODO: Actually, what this needs to do is call the animator and then
-                  //set the Start attack method in the animation as an event.
             HandleMeleeAttack();
         }
     }
 
     void HandleDashInput()
     {
-        if (CheckIfPlayerIsInIdleOrWalkState())
+        if (CheckIfPlayerIsInIdleOrWalkState() || _player.StateMachine.CurrentState == _player.JumpState)
             _dashAbility.TriggerAbility();
     }
 
@@ -68,6 +66,8 @@ public class PlayerAbilityHandler : MonoBehaviour
 
     void HandleMeleeAttack()
     {
+        //TODO: Actually, what this needs to do is call the animator and then
+        //set the Start attack method in the animation as an event.
         if (CheckIfPlayerIsInIdleOrWalkState())
             _meleeWeapon.StartAttack();
     }

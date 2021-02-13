@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.StateMachine;
 
-public class PlayerMovingState : IState<PlayerController>
+public class PlayerJumpState : IState<PlayerController>
 {
     public void EnterState(PlayerController player)
     {
@@ -12,25 +12,16 @@ public class PlayerMovingState : IState<PlayerController>
 
     public void ExitState(PlayerController player)
     {
-        
+       
     }
 
     public void TickState(PlayerController player)
     {
         player.CharacterController.Move(Input.GetAxisRaw("Horizontal"), false, false);
 
-        if (player.Rigidbody.velocity.magnitude < 0.01f)
+        if (player.Rigidbody.velocity.y == 0f && player.CharacterController.Colliders.Length > 0)
         {
             player.StateMachine.SetState(player.IdleState);
-        }
-        else if (Input.GetButtonDown("Jump"))
-        {
-            player.CharacterController.Move(
-                Input.GetAxisRaw("Horizontal"), 
-                false, 
-                true
-                );
-            player.StateMachine.SetState(player.JumpState);
         }
     }
 }
