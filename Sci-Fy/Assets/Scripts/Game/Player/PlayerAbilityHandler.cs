@@ -45,6 +45,14 @@ public class PlayerAbilityHandler : MonoBehaviour
         {
             HandleLaserInput();
         }
+=======
+        else if(Input.GetButtonDown("Melee Attack"))
+        {
+            //TODO: Actually, what this needs to do is call the animator and then
+                  //set the Start attack method in the animation as an event.
+            HandleMeleeAttack();
+        }
+>>>>>>> parent of 6e1bd2c (Added Player's Jump State and Ground Bug Fixed)
     }
 
     void HandleDashInput()
@@ -59,6 +67,15 @@ public class PlayerAbilityHandler : MonoBehaviour
             _laserAbility.TriggerAbility();
     }
 
+<<<<<<< HEAD
+=======
+    void HandleMeleeAttack()
+    {
+        if (CheckIfPlayerIsInIdleOrWalkState())
+            _meleeWeapon.StartAttack();
+    }
+
+>>>>>>> parent of 6e1bd2c (Added Player's Jump State and Ground Bug Fixed)
     private bool CheckIfPlayerIsInIdleOrWalkState()
     {
         return _player.StateMachine.CurrentState == _player.IdleState ||
