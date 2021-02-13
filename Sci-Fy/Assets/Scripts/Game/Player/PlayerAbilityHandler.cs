@@ -24,7 +24,6 @@ public class PlayerAbilityHandler : MonoBehaviour
 
     private Dash _dashAbility;
     private Laser _laserAbility;
-    [SerializeField] private MeleeWeapon _meleeWeapon;
 
     private void Start()
     {
@@ -46,15 +45,11 @@ public class PlayerAbilityHandler : MonoBehaviour
         {
             HandleLaserInput();
         }
-        else if(Input.GetButtonDown("Melee Attack"))
-        {
-            HandleMeleeAttack();
-        }
     }
 
     void HandleDashInput()
     {
-        if (CheckIfPlayerIsInIdleOrWalkState() || _player.StateMachine.CurrentState == _player.JumpState)
+        if (CheckIfPlayerIsInIdleOrWalkState())
             _dashAbility.TriggerAbility();
     }
 
@@ -62,14 +57,6 @@ public class PlayerAbilityHandler : MonoBehaviour
     {
         if (CheckIfPlayerIsInIdleOrWalkState())
             _laserAbility.TriggerAbility();
-    }
-
-    void HandleMeleeAttack()
-    {
-        //TODO: Actually, what this needs to do is call the animator and then
-        //set the Start attack method in the animation as an event.
-        if (CheckIfPlayerIsInIdleOrWalkState())
-            _meleeWeapon.StartAttack();
     }
 
     private bool CheckIfPlayerIsInIdleOrWalkState()
