@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-//TODO: Need to use scriptable objects
 public class Damageable : MonoBehaviour
 {
     [Header("Team")]
