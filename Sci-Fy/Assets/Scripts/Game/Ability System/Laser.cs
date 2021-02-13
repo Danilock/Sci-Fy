@@ -7,7 +7,7 @@ namespace Game.Ability {
     {
         [Space]
         [Header("Laser Attributes")]
-        [SerializeField, Range(0, 20)] private float _laserEndDistance;
+        [SerializeField, Range(0, 20)] private float _laserSize;
 
         #region Laser Damage
         [Header("Laser Damage")]
@@ -41,9 +41,9 @@ namespace Game.Ability {
         private Vector3 GetLaserEndPosition()
         {
             float facingDirection = Mathf.Sign(transform.localScale.x);
-            return new Vector3(Mathf.Abs(transform.position.x) + (_laserEndDistance * facingDirection),
-                                                            transform.position.y,
-                                                            transform.position.z);
+            return new Vector3(transform.position.x + (_laserSize * facingDirection),
+                                                        transform.position.y, 
+                                                        transform.position.z);
         }
 
         void DoLaserDamage(RaycastHit2D[] objectsHitted)
