@@ -45,6 +45,7 @@ public class PlayerAbilityHandler : MonoBehaviour
         {
             HandleLaserInput();
         }
+<<<<<<< HEAD
 =======
         else if(Input.GetButtonDown("Melee Attack"))
         {
