@@ -67,7 +67,11 @@ public class PlayerAbilityHandler : MonoBehaviour
         if (CheckIfPlayerIsInIdleOrWalkState())
         {
             _player.AnimationHandler.TriggerAttackAnimation(_meleeAttackIndex);
-            _meleeAttackIndex = (_meleeAttackIndex + 1) % 3;
+
+            if (_meleeAttackIndex == 2)
+                _meleeAttackIndex = 1;
+            else
+                _meleeAttackIndex++;
         }
             
     }

@@ -30,7 +30,7 @@ public class PlayerController : Character<PlayerController>
 
     [HideInInspector] public Rigidbody2D Rigidbody { get; private set; }
     #endregion
-    public PlayerAnimationHandler AnimationHandler;
+    [HideInInspector] public PlayerAnimationHandler AnimationHandler;
 
     // Start is called before the first frame update
     void Start()
