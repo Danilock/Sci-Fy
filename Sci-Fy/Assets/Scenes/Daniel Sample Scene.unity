@@ -371,7 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _radius: 0.99
   _offset: {x: 1.21, y: 0, z: 0}
-  _damage: 10
+  _damage: 0.5
   _damageableLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: 1
-  _startHealth: 10
+  _startHealth: 50
   _startArmor: 0
   OnDead:
     m_PersistentCalls:
@@ -785,6 +785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_JumpForce: 450
   m_CrouchSpeed: 0
+  m_SpeedMultiplier: 0.75
   m_MovementSmoothing: 0
   m_AirControl: 1
   m_WhatIsGround:

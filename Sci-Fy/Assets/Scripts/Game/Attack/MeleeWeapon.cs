@@ -10,7 +10,7 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] private Vector3 _offset;
 
     [Header("Damage")]
-    [SerializeField] private float _damage;
+    [SerializeField, Range(0, 1)] private float _damage = .5f;
     [SerializeField] private LayerMask _damageableLayers;
     [SerializeField] private DamageSourceTeam _sourceTeam;
     [SerializeField] private AttackForce _force;
