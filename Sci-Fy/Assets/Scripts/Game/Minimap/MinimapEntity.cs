@@ -36,6 +36,7 @@ namespace Game.Minimap
         private void InstantiateIconOnMinimap(){
             _iconObj = new GameObject(gameObject.name + " minimap icon");
             _iconObj.transform.localScale = transform.localScale;
+
             _iconObj.layer = LayerMask.NameToLayer("Minimap Entity");
             _iconObj.transform.SetParent(MinimapContainer.transform);
 
