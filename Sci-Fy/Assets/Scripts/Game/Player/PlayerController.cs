@@ -45,6 +45,5 @@ public class PlayerController : Character<PlayerController>
     void Update()
     {
         StateMachine.CurrentState.TickState(this);
-        Debug.Log(StateMachine.CurrentState);
     }
 }
