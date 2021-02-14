@@ -320,7 +320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618298660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.165, z: 0}
+  m_LocalPosition: {x: 0, y: -0.266, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1156336363}
@@ -757,7 +757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156336362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.24, y: -3.02, z: -2.3366983}
+  m_LocalPosition: {x: 3.24, y: -3.03, z: -2.3366983}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 618298661}
@@ -811,14 +811,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.609375, y: 0.515625}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.609375, y: 0.515625}
   m_EdgeRadius: 0
 --- !u!212 &1156336366
 SpriteRenderer:
@@ -860,7 +860,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 921067b8f32c5f941af456db84a95236, type: 3}
+  m_Sprite: {fileID: -2878776438291150895, guid: 275ceed34be23e94aae2bc30c5ae2f6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -939,7 +939,19 @@ MonoBehaviour:
   _cooldown: 2
   _canUse: 1
   _force: 15
-  _shadow: {fileID: 21300000, guid: 921067b8f32c5f941af456db84a95236, type: 3}
+  _shadow:
+  - {fileID: 1891884887021570966, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
+  - {fileID: -8174104727354534690, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
+  - {fileID: -40940646441338392, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
+  - {fileID: 7670377727281452992, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
+  - {fileID: 6350930498693313991, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
+  - {fileID: -4139439837424765390, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
+  - {fileID: 5412679958734541296, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
+  - {fileID: -2762627379697588864, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
+  - {fileID: 4284645808401850633, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
+  - {fileID: 270600758403180713, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
+  - {fileID: -1075537398262496340, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
+  - {fileID: -3603222473789913697, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
 --- !u!114 &1156336371
 MonoBehaviour:
   m_ObjectHideFlags: 0

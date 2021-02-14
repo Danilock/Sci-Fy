@@ -9,7 +9,7 @@ namespace Game.Ability
     {
         [Header("Dash Attributes")]
         [SerializeField, Range(0, 2500)] float _force;
-        [SerializeField, Tooltip("Shadows that will appear when dashing")] Sprite _shadow;
+        [SerializeField, Tooltip("Shadows that will appear when dashing")] Sprite[] _shadow;
 
         private Rigidbody2D _rgb;
         private CharacterController2D _characterController;
@@ -49,7 +49,7 @@ namespace Game.Ability
         {
             int i = 0;
 
-            while(i < 10)
+            while(i < _shadow.Length)
             {
                 GameObject fadeObj = new GameObject("Fade");
 
@@ -58,7 +58,7 @@ namespace Game.Ability
 
                 SpriteRenderer fadeSprite = fadeObj.AddComponent<SpriteRenderer>();
 
-                fadeSprite.sprite = _shadow;
+                fadeSprite.sprite = _shadow[i];
                 fadeSprite.color = Color.white * .5f;
 
                 i++;
