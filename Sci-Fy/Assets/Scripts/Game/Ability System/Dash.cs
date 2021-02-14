@@ -54,7 +54,7 @@ namespace Game.Ability
                 GameObject fadeObj = new GameObject("Fade");
 
                 fadeObj.transform.position = transform.position;
-                fadeObj.transform.localScale = new Vector3(2f, 2f, 1f);
+                fadeObj.transform.localScale = transform.localScale;
 
                 SpriteRenderer fadeSprite = fadeObj.AddComponent<SpriteRenderer>();
 

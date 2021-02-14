@@ -7,7 +7,8 @@ public class PlayerMovingState : IState<PlayerController>
 {
     public void EnterState(PlayerController player)
     {
-        
+        player.name = "s";
+        //player.AnimationHandler.TriggerWalkAnimation();
     }
 
     public void ExitState(PlayerController player)
@@ -26,8 +27,8 @@ public class PlayerMovingState : IState<PlayerController>
         else if (Input.GetButtonDown("Jump"))
         {
             player.CharacterController.Move(
-                Input.GetAxisRaw("Horizontal"), 
-                false, 
+                Input.GetAxisRaw("Horizontal"),
+                false,
                 true
                 );
             player.StateMachine.SetState(player.JumpState);

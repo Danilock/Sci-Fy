@@ -740,10 +740,12 @@ GameObject:
   - component: {fileID: 1156336369}
   - component: {fileID: 1156336370}
   - component: {fileID: 1156336371}
+  - component: {fileID: 1156336375}
   - component: {fileID: 1156336372}
   - component: {fileID: 1156336373}
+  - component: {fileID: 1156336374}
   m_Layer: 8
-  m_Name: Player
+  m_Name: Ragnarov
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1003,6 +1005,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 8b81651c58d3b264fada9bf98fcb300c, type: 3}
   _color: {r: 1, g: 0.9490196, b: 0, a: 1}
+--- !u!95 &1156336374
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156336362}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae959e32303cf3548ba425d0ab6ce8da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1156336375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156336362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f58b6d09e34e284ba47c17978a3d0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1297802974
 GameObject:
   m_ObjectHideFlags: 0

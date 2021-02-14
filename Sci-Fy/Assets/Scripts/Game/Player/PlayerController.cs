@@ -29,15 +29,16 @@ public class PlayerController : Character<PlayerController>
 
     [HideInInspector] public Rigidbody2D Rigidbody { get; private set; }
     #endregion
+    public PlayerAnimationHandler AnimationHandler;
 
     // Start is called before the first frame update
-    public override void Start()
+    void Start()
     {
-        base.Start();
-
         CharacterController = GetComponent<CharacterController2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
-        
+        AnimationHandler = GetComponent<PlayerAnimationHandler>();
+
+        StateMachine.StateMachineOwner = this;
         StateMachine.SetState(IdleState);
     }
 
