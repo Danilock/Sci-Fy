@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.StateMachine;
 
-public class PlayerMovingState : IState<PlayerController>
+public class PlayerWalkState : IState<PlayerController>
 {
     public void EnterState(PlayerController player)
     {
-        player.name = "s";
-        //player.AnimationHandler.TriggerWalkAnimation();
+        player.AnimationHandler.TriggerWalkAnimation();
     }
 
     public void ExitState(PlayerController player)

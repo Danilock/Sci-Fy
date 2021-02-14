@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MeleeWeapon : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] private AttackForce _force;
 
     [SerializeField] private GameObject _weaponOwner;
+
+    [SerializeField] UnityEvent OnStartAttack;
 
     public bool UseMeleeAttack { get; private set; }
 
@@ -49,7 +52,11 @@ public class MeleeWeapon : MonoBehaviour
         _weaponOwner = newOwner;
     }
 
-    public void StartAttack() => UseMeleeAttack = true;
+    public void StartAttack()
+    {
+        UseMeleeAttack = true;
+        OnStartAttack.Invoke();
+    }
 
     public void EndAttack() => UseMeleeAttack = false;
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Ability
 {
@@ -34,11 +35,14 @@ namespace Game.Ability
             } 
         }
 
+        public UnityEvent OnUseAbility;
+
         public void TriggerAbility()
         {
             if (!CanUse)
                 return;
             Ability();
+            OnUseAbility.Invoke();
             StartCoroutine(StartCooldown());
         }
 

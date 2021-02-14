@@ -378,6 +378,9 @@ MonoBehaviour:
   _sourceTeam: 0
   _force: 0
   _weaponOwner: {fileID: 1156336362}
+  OnStartAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &692295692
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 450
-  m_CrouchSpeed: 0.648
+  m_CrouchSpeed: 0
   m_MovementSmoothing: 0
   m_AirControl: 1
   m_WhatIsGround:
@@ -906,6 +909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3442efbd5c11743825705ac55a973d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnimationHandler: {fileID: 0}
 --- !u!114 &1156336369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,6 +944,9 @@ MonoBehaviour:
   Icon: {fileID: 0}
   _cooldown: 2
   _canUse: 1
+  OnUseAbility:
+    m_PersistentCalls:
+      m_Calls: []
   _force: 15
   _shadow:
   - {fileID: 1891884887021570966, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
@@ -984,6 +991,21 @@ MonoBehaviour:
   Icon: {fileID: 0}
   _cooldown: 3
   _canUse: 1
+  OnUseAbility:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1156336374}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Laser
+          m_BoolArgument: 0
+        m_CallState: 2
   _laserSize: 5.3
   _laserDamage: 5
   _laserOwnerTeam: 0
