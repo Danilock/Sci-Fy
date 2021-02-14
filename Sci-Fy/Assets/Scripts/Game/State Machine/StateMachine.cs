@@ -6,11 +6,7 @@ namespace Game.StateMachine
 {
     public class StateMachine<T>
     {
-        T StateMachineOwner;
-        public StateMachine(T stateMachineOwner)
-        {
-            StateMachineOwner = stateMachineOwner;
-        }
+        public T StateMachineOwner;
         public IState<T> CurrentState
         {
             get;
