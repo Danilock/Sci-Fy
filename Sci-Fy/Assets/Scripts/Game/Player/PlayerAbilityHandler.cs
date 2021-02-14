@@ -24,7 +24,7 @@ public class PlayerAbilityHandler : MonoBehaviour
 
     private Dash _dashAbility;
     private Laser _laserAbility;
-    [SerializeField] private MeleeWeapon _meleeWeapon;
+    private MeleeWeapon _meleeWeapon;
 
     private void Start()
     {
