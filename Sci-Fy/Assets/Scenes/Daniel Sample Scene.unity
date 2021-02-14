@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 760900370}
   - component: {fileID: 760900369}
   - component: {fileID: 760900371}
+  - component: {fileID: 760900372}
   m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
@@ -553,6 +554,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &760900372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760900368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d14e22affb0d75a47b9f9a311feca35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 8b81651c58d3b264fada9bf98fcb300c, type: 3}
+  _color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &899404116
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +741,7 @@ GameObject:
   - component: {fileID: 1156336370}
   - component: {fileID: 1156336371}
   - component: {fileID: 1156336372}
+  - component: {fileID: 1156336373}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -961,6 +977,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _attackForce: 0
+--- !u!114 &1156336373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156336362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d14e22affb0d75a47b9f9a311feca35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 8b81651c58d3b264fada9bf98fcb300c, type: 3}
+  _color: {r: 1, g: 0.9490196, b: 0, a: 1}
 --- !u!1 &1297802974
 GameObject:
   m_ObjectHideFlags: 0
