@@ -7,8 +7,9 @@ public class PlayerController : Character<PlayerController>
 {
     #region Player State Machine
     public PlayerIdleState IdleState = new PlayerIdleState();
-    public PlayerMovingState MovingState = new PlayerMovingState();
+    public PlayerWalkState WalkState = new PlayerWalkState();
     public PlayerJumpState JumpState = new PlayerJumpState();
+    public PlayerAttackState AttackState = new PlayerAttackState();
     #endregion
 
     #region CharacterController
@@ -47,4 +48,25 @@ public class PlayerController : Character<PlayerController>
     {
         StateMachine.CurrentState.TickState(this);
     }
+
+    public void SetPlayerState(PlayerStates newPlayerState)
+    {
+        switch (newPlayerState)
+        {
+            case PlayerStates.Idle:
+                StateMachine.SetState(IdleState);
+                break;
+            case PlayerStates.Walk:
+                StateMachine.SetState(WalkState);
+                break;
+            case PlayerStates.Jump:
+                StateMachine.SetState(JumpState);
+                break;
+            case PlayerStates.Attack:
+                StateMachine.SetState(AttackState);
+                break;
+        }
+    }
+
+    public enum PlayerStates { Idle, Walk, Jump, Attack }
 }

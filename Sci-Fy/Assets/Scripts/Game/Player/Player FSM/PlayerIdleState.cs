@@ -8,7 +8,7 @@ public class PlayerIdleState : IState<PlayerController>
 
     public void EnterState(PlayerController player)
     {
-        
+        player.AnimationHandler.TriggerIdleAnimation();
     }
 
     public void ExitState(PlayerController player)
@@ -33,7 +33,7 @@ public class PlayerIdleState : IState<PlayerController>
         }
         else if (player.Rigidbody.velocity.x != 0f && player.CharacterController.IsGrounded)
         {
-            player.StateMachine.SetState(player.MovingState);
+            player.StateMachine.SetState(player.WalkState);
         }
     }
 }

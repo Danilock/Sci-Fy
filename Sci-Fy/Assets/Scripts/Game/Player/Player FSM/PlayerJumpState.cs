@@ -7,7 +7,7 @@ public class PlayerJumpState : IState<PlayerController>
 {
     public void EnterState(PlayerController player)
     {
-        //player.AnimationHandler.TriggerJumpAnimation();
+        player.AnimationHandler.TriggerJumpAnimation();
     }
 
     public void ExitState(PlayerController player)

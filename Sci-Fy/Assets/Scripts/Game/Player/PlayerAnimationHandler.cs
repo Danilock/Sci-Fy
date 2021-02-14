@@ -44,4 +44,9 @@ public class PlayerAnimationHandler : MonoBehaviour
         }
         _animatorController.Play(_jumpAnimation);
     }
+
+    public void TriggerAttackAnimation(int attackIndex)
+    {
+        _animatorController.Play("Attack" + attackIndex);
+    }
 }
