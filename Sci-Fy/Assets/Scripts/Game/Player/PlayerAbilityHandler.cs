@@ -57,7 +57,7 @@ public class PlayerAbilityHandler : MonoBehaviour
 
     void HandleDashInput()
     {
-        if (CheckIfPlayerIsInIdleOrWalkState())
+        if (CheckIfPlayerIsInIdleOrWalkState() || _player.StateMachine.CurrentState == _player.JumpState)
             _dashAbility.TriggerAbility();
     }
 
