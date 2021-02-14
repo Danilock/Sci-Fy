@@ -24,6 +24,7 @@ public class PlayerAbilityHandler : MonoBehaviour
 
     private Dash _dashAbility;
     private Laser _laserAbility;
+    private MeleeWeapon _meleeWeapon;
 
     private void Start()
     {
@@ -45,7 +46,6 @@ public class PlayerAbilityHandler : MonoBehaviour
         {
             HandleLaserInput();
         }
-<<<<<<< HEAD
 
         else if(Input.GetButtonDown("Melee Attack"))
         {
@@ -53,8 +53,6 @@ public class PlayerAbilityHandler : MonoBehaviour
                   //set the Start attack method in the animation as an event.
             HandleMeleeAttack();
         }
-=======
->>>>>>> parent of 4721de0 (Merge branch 'Dev' into main)
     }
 
     void HandleDashInput()
@@ -69,15 +67,12 @@ public class PlayerAbilityHandler : MonoBehaviour
             _laserAbility.TriggerAbility();
     }
 
-<<<<<<< HEAD
     void HandleMeleeAttack()
     {
         if (CheckIfPlayerIsInIdleOrWalkState())
             _meleeWeapon.StartAttack();
     }
 
-=======
->>>>>>> parent of 4721de0 (Merge branch 'Dev' into main)
     private bool CheckIfPlayerIsInIdleOrWalkState()
     {
         return _player.StateMachine.CurrentState == _player.IdleState ||
