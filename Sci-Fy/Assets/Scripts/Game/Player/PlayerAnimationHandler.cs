@@ -49,4 +49,6 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         _animatorController.Play("Attack" + attackIndex);
     }
+
+    public void TriggerLaserAnimation() => _animatorController.Play("Laser");
 }
