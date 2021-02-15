@@ -30,8 +30,47 @@ namespace Game.Ability {
         }
         #endregion
 
+        [Header("Projectile")]
+        [SerializeField] private Projectile _projectile;
+        [SerializeField] private Transform _instantiatePoint;
+
+        #region Laser Object Pooling
+        const int LASER_POOL_SIZE = 5;
+        private GameObject[] _laserPool = new GameObject[LASER_POOL_SIZE];
+        private int _actualLaserIndexInPool;
+
+        private static GameObject _poolParent;
+        private static GameObject PoolParent 
+        {
+            get
+            {
+                if (_poolParent == null)
+                    _poolParent = new GameObject("Laser Pool");
+                
+                return _poolParent;
+            }
+        }
+        #endregion
+
+        private void Start()
+        {
+            InitiateLaserPool();
+        }
+
+        private void InitiateLaserPool()
+        {
+            for(int i = 0; i < _laserPool.Length; i++)
+            {
+                _laserPool[i] = Instantiate(_projectile.gameObject, transform.position, Quaternion.identity);
+                _laserPool[i].SetActive(false);
+                _laserPool[i].transform.SetParent(PoolParent.transform);
+            }
+        }
+
         public override void Ability()
         {
+            UseLaserPool();//Activating the laser effect
+
             RaycastHit2D[] enemiesHitted = Physics2D.LinecastAll(transform.position, GetLaserEndPosition(), DamageLayers);
 
             if (enemiesHitted.Length > 0)
@@ -46,7 +85,7 @@ namespace Game.Ability {
                                                         transform.position.z);
         }
 
-        void DoLaserDamage(RaycastHit2D[] objectsHitted)
+        private void DoLaserDamage(RaycastHit2D[] objectsHitted)
         {
             foreach(RaycastHit2D actualObjectHitted in objectsHitted)
             {
@@ -58,6 +97,16 @@ namespace Game.Ability {
                 damageable.GetComponent<SpriteRenderer>().color = Color.black;
                 damageable.TakeDamage(_laserDamage, _laserOwnerTeam);
             }
+        }
+
+        public void HandleLaserInAnimation() => TriggerAbility();
+
+        private void UseLaserPool()
+        {
+            _laserPool[_actualLaserIndexInPool].transform.position = _instantiatePoint.position;
+            _laserPool[_actualLaserIndexInPool].SetActive(true);
+
+            _actualLaserIndexInPool = (_actualLaserIndexInPool + 1) & _laserPool.Length;
         }
 
         private void OnDrawGizmos()
