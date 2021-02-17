@@ -52,8 +52,13 @@ namespace Game.Ability {
         }
         #endregion
 
-        private void Start()
+        private Animator _animator;
+
+        public override void Start()
         {
+            base.Start();
+            _animator = GetComponent<Animator>();
+
             InitiateLaserPool();
         }
 
@@ -69,12 +74,7 @@ namespace Game.Ability {
 
         public override void Ability()
         {
-            UseLaserPool();//Activating the laser effect
-
-            RaycastHit2D[] enemiesHitted = Physics2D.LinecastAll(transform.position, GetLaserEndPosition(), DamageLayers);
-
-            if (enemiesHitted.Length > 0)
-                DoLaserDamage(enemiesHitted);
+            _animator.Play("Laser");
         }
 
         private Vector3 GetLaserEndPosition()
@@ -85,9 +85,16 @@ namespace Game.Ability {
                                                         transform.position.z);
         }
 
-        private void DoLaserDamage(RaycastHit2D[] objectsHitted)
+        private void DoLaserDamage()
         {
-            foreach(RaycastHit2D actualObjectHitted in objectsHitted)
+            UseLaserPool();//Activating the laser effect
+
+            RaycastHit2D[] enemiesHitted = Physics2D.LinecastAll(transform.position, GetLaserEndPosition(), DamageLayers);
+
+            if (enemiesHitted.Length < 0)
+                return;
+
+            foreach (RaycastHit2D actualObjectHitted in enemiesHitted)
             {
                 Damageable damageable = actualObjectHitted.collider.GetComponent<Damageable>();
 
@@ -98,8 +105,6 @@ namespace Game.Ability {
                 damageable.TakeDamage(_laserDamage, _laserOwnerTeam);
             }
         }
-
-        public void HandleLaserInAnimation() => TriggerAbility();
 
         private void UseLaserPool()
         {
