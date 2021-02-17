@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 namespace Game.Ability
 {
+    [RequireComponent(typeof(Mana))]
     public abstract class BaseAbility : MonoBehaviour
     {
         [Header("Ability Info")]
@@ -12,6 +13,9 @@ namespace Game.Ability
         public Texture2D Icon;
 
         [SerializeField] float _cooldown;
+
+        [SerializeField] float _manaRequired;
+        private Mana _manaComponent;
         public float Cooldown { 
             get 
             { 
@@ -37,13 +41,19 @@ namespace Game.Ability
 
         public UnityEvent OnUseAbility;
 
+        public virtual void Start()
+        {
+            _manaComponent = GetComponent<Mana>();
+        }
+
         public void TriggerAbility()
         {
-            if (!CanUse)
+            if (!CanUse || _manaComponent.CurrentMana < _manaRequired)
                 return;
             Ability();
             OnUseAbility.Invoke();
             StartCoroutine(StartCooldown());
+            _manaComponent.RestMana(_manaRequired);
         }
 
         public abstract void Ability();

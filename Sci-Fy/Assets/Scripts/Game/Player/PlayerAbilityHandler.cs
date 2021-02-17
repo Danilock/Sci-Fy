@@ -58,8 +58,11 @@ public class PlayerAbilityHandler : MonoBehaviour
 
     void HandleLaserInput()
     {
-        if (CheckIfPlayerIsInIdleOrWalkState() && _laserAbility.CanUse)
-            _player.AnimationHandler.TriggerLaserAnimation();
+        if (CheckIfPlayerIsInIdleOrWalkState())
+        {
+            _laserAbility.TriggerAbility();
+            _player.Rigidbody.velocity = Vector2.zero;
+        }
     }
 
     void HandleMeleeAttack()
