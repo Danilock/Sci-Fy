@@ -92,7 +92,7 @@ AnimationClip:
     intParameter: 3
     messageOptions: 0
   - time: 0.7
-    functionName: DoLaserDamage
+    functionName: ShootLaser
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
