@@ -50,26 +50,27 @@ public class PlayerAbilityHandler : MonoBehaviour
             HandleMeleeAttack();
     }
 
-    void HandleDashInput()
+    private void HandleDashInput()
     {
         if (CheckIfPlayerIsInIdleOrWalkState() || _player.StateMachine.CurrentState == _player.JumpState)
             _dashAbility.TriggerAbility();
     }
 
-    void HandleLaserInput()
+    private void HandleLaserInput()
     {
         if (CheckIfPlayerIsInIdleOrWalkState())
         {
             _laserAbility.TriggerAbility();
-            _player.Rigidbody.velocity = Vector2.zero;
+            StopPlayerMovement();
         }
     }
 
-    void HandleMeleeAttack()
+    private void HandleMeleeAttack()
     {
         if (CheckIfPlayerIsInIdleOrWalkState())
         {
             _player.AnimationHandler.TriggerAttackAnimation(_meleeAttackIndex);
+            StopPlayerMovement();
 
             if (_meleeAttackIndex == 2)
                 _meleeAttackIndex = 1;
@@ -77,6 +78,11 @@ public class PlayerAbilityHandler : MonoBehaviour
                 _meleeAttackIndex++;
         }
             
+    }
+
+    private void StopPlayerMovement()
+    {
+        _player.Rigidbody.velocity = Vector2.zero;
     }
 
     private bool CheckIfPlayerIsInIdleOrWalkState()
