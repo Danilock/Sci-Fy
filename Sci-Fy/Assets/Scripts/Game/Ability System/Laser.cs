@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Ability {
     public class Laser : BaseAbility, IAttack
@@ -8,6 +9,7 @@ namespace Game.Ability {
         [Space]
         [Header("Laser Attributes")]
         [SerializeField, Range(0, 20)] private float _laserSize;
+        [SerializeField] private UnityEvent _OnLaserShoot;
 
         #region Laser Damage
         [Header("Laser Damage")]
@@ -85,7 +87,7 @@ namespace Game.Ability {
                                                         transform.position.z);
         }
 
-        private void DoLaserDamage()
+        private void ShootLaser()
         {
             UseLaserPool();//Activating the laser effect
 
@@ -104,6 +106,8 @@ namespace Game.Ability {
                 damageable.GetComponent<SpriteRenderer>().color = Color.black;
                 damageable.TakeDamage(_laserDamage, _laserOwnerTeam);
             }
+
+            _OnLaserShoot.Invoke();
         }
 
         private void UseLaserPool()

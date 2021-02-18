@@ -1151,6 +1151,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _laserSize: 5.3
+  _OnLaserShoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1671750043}
+        m_TargetAssemblyTypeName: Cinemachine.CinemachineImpulseSource, Cinemachine
+        m_MethodName: GenerateImpulse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _laserDamage: 5
   _laserOwnerTeam: 0
   _damageLayers:
@@ -1255,8 +1270,8 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.66
-    y: 0.66
+    x: 0.81
+    y: 0.69
     width: 1
     height: 1
   near clip plane: 0.3
