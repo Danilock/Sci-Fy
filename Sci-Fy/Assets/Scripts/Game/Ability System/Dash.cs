@@ -27,7 +27,7 @@ namespace Game.Ability
             _damageable.SetInvulnerableByXSeconds(2f);
 
             StartCoroutine(HandleCharacterController());
-            _rgb.AddForce(Vector2.right * CalculateCharacterDirection() * _force, ForceMode2D.Impulse);
+            _rgb.velocity += new Vector2(Input.GetAxisRaw("Horizontal") * _force, Input.GetAxisRaw("Vertical") * _force);
             StartCoroutine(FadeEffect());
         }
 
