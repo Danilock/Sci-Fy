@@ -10,6 +10,7 @@ namespace Game.Ability
         [Header("Dash Attributes")]
         [SerializeField, Range(0, 2500)] float _force;
         [SerializeField, Tooltip("Shadows that will appear when dashing")] Sprite[] _shadow;
+        [SerializeField] float _shadowTransparency = .5f;
 
         private Rigidbody2D _rgb;
         private CharacterController2D _characterController;
@@ -60,7 +61,7 @@ namespace Game.Ability
                 SpriteRenderer fadeSprite = fadeObj.AddComponent<SpriteRenderer>();
 
                 fadeSprite.sprite = _shadow[i];
-                fadeSprite.color = Color.white * .5f;
+                fadeSprite.color = Color.white * _shadowTransparency;
                 fadeSprite.sortingLayerName = "Characters";
 
                 i++;
