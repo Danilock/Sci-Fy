@@ -25,9 +25,8 @@ namespace Game.Ability
         public override void Ability()
         {
             _damageable.SetInvulnerableByXSeconds(2f);
-
             StartCoroutine(HandleCharacterController());
-            _rgb.velocity += new Vector2(Input.GetAxisRaw("Horizontal") * _force, Input.GetAxisRaw("Vertical") * _force);
+            _rgb.AddForce(Vector2.right * CalculateCharacterDirection() * _force, ForceMode2D.Impulse);
             StartCoroutine(FadeEffect());
         }
 
@@ -35,6 +34,8 @@ namespace Game.Ability
 
         IEnumerator HandleCharacterController()
         {
+            float lastGravityValue = _rgb.gravityScale;
+
             _characterController.CanMove = false;
             yield return new WaitForSeconds(.5f);
             _characterController.CanMove = true;
@@ -60,6 +61,7 @@ namespace Game.Ability
 
                 fadeSprite.sprite = _shadow[i];
                 fadeSprite.color = Color.white * .5f;
+                fadeSprite.sortingLayerName = "Characters";
 
                 i++;
 

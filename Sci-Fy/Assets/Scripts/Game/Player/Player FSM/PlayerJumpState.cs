@@ -19,7 +19,7 @@ public class PlayerJumpState : IState<PlayerController>
     {
         player.CharacterController.Move(Input.GetAxisRaw("Horizontal"), false, false);
 
-        if (player.Rigidbody.velocity.y == 0f && player.CharacterController.IsGrounded)
+        if (player.Rigidbody.velocity.y <= 1f && player.CharacterController.IsGrounded)
         {
             player.StateMachine.SetState(player.IdleState);
         }
