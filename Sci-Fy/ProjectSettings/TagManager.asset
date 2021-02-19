@@ -42,3 +42,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 3525761751
+    locked: 0
+  - name: Decorations
+    uniqueID: 1506561337
+    locked: 0
+  - name: Props over decorations
+    uniqueID: 378657677
+    locked: 0
+  - name: Environment
+    uniqueID: 2240676727
+    locked: 0
+  - name: Decorations Over Environment
+    uniqueID: 2097685307
+    locked: 0
+  - name: UI World Space
+    uniqueID: 1465948049
+    locked: 0
+  - name: Characters
+    uniqueID: 1691488369
+    locked: 0
+  - name: UI
+    uniqueID: 3407871297
+    locked: 0

@@ -5,16 +5,55 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] float _obstacleDamageWhenCollide = 10f;
-    [SerializeField] DamageSourceTeam _obstacleTeam;
+    [SerializeField] private string _targetTag;
+    [SerializeField] private float _damageAmount;
+    [SerializeField] private DamageSourceTeam _sourceTeam;
+    private Collider2D _objectCollider;
+
+    private void Start()
+    {
+        _objectCollider = GetComponent<Collider2D>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Damageable colDamageable = collision.gameObject.GetComponent<Damageable>();
-
-        if (colDamageable == null)
+        if (_objectCollider.isTrigger)
             return;
 
-        colDamageable.TakeDamage(_obstacleDamageWhenCollide, _obstacleTeam);
+        if (collision.gameObject.CompareTag(_targetTag))
+        {
+            DoDamage(collision);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!_objectCollider.isTrigger)
+            return;
+
+        if (other.gameObject.CompareTag(_targetTag))
+        {
+            DoDamage(other);
+        }
+    }
+
+    private void DoDamage(Collider2D collision)
+    {
+        Damageable collisionDamageable = collision.gameObject.GetComponent<Damageable>();
+
+        if (collisionDamageable == null)
+            return;
+
+        collisionDamageable.TakeDamage(_damageAmount, _sourceTeam);
+    }
+
+    private void DoDamage(Collision2D collision)
+    {
+        Damageable collisionDamageable = collision.gameObject.GetComponent<Damageable>();
+
+        if (collisionDamageable == null)
+            return;
+
+        collisionDamageable.TakeDamage(_damageAmount, _sourceTeam);
     }
 }

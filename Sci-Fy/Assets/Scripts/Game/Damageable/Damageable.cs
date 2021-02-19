@@ -50,6 +50,23 @@ public class Damageable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Does damage ignoring the team
+    /// </summary>
+    /// <param name="damageAmount"></param>
+    public void TakeDamage(float damageAmount)
+    {
+        if (Invulnerable)
+            return;
+
+        CurrentHealth -= CalculateDamageByArmor(damageAmount, CurrentArmor);
+
+        if (CurrentHealth <= 0f)
+        {
+            OnDead.Invoke();
+        }
+    }
+
     float CalculateDamageByArmor(float damage, float armor)
     {
         if (armor > damage)
