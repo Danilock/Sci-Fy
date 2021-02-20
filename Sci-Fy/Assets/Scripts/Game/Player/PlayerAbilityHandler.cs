@@ -67,10 +67,9 @@ public class PlayerAbilityHandler : MonoBehaviour
 
     private void HandleMeleeAttack()
     {
-        if (CheckIfPlayerIsInIdleOrWalkState())
+        if (CheckIfPlayerIsInIdleOrWalkState() || _player.StateMachine.CurrentState == _player.JumpState)
         {
             _player.AnimationHandler.TriggerAttackAnimation(_meleeAttackIndex);
-            StopPlayerMovement();
 
             if (_meleeAttackIndex == 2)
                 _meleeAttackIndex = 1;
