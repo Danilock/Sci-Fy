@@ -83,6 +83,11 @@ public class Damageable : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         Invulnerable = false;
     }
+
+    public void InstantiateOnDead(GameObject objToInstantiate)
+    {
+        Instantiate(objToInstantiate, transform.position, Quaternion.identity);
+    }
 }
 
 public enum DamageSourceTeam
