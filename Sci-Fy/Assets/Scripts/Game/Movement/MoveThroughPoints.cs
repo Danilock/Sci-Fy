@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace Game.Movement
 {
@@ -25,7 +26,7 @@ namespace Game.Movement
         //Drawing green lines to specify the end points of this object
         private void OnDrawGizmos()
         {
-            if (_wayPoints.Length < 2)
+            if (_wayPoints.Length < 2 || _wayPoints == null)
                 return;
 
             Gizmos.color = Color.green;
@@ -34,6 +35,10 @@ namespace Game.Movement
             {
                 Gizmos.DrawLine(_wayPoints[i].position, _wayPoints[(i + 1) % _wayPoints.Length].position);
                 Gizmos.DrawSphere(_wayPoints[i].position, .2f);
+
+                #if UNITY_EDITOR
+                Handles.Label(_wayPoints[i].position + (Vector3.up * .3f), (i + 1).ToString());
+                #endif
             }
         }
     }
