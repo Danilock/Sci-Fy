@@ -4241,7 +4241,7 @@ MonoBehaviour:
   StartPosition: {fileID: 0}
   EndPosition: {fileID: 0}
   MoveOnGameStart: 0
-  Speed: 0.2
+  Speed: 0.072
   OnReachDistance:
     m_PersistentCalls:
       m_Calls:
