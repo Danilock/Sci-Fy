@@ -37,7 +37,7 @@ namespace Game.Movement
         {
             while(Vector2.Distance(EndPosition.position, transform.position) > .2f)
             {
-                LerpPct += .001f * Speed;
+                LerpPct += (.001f * Speed) / 100;
                 transform.position = Vector2.Lerp(StartPosition.position,
                                                   EndPosition.position, LerpPct);
                 yield return null;

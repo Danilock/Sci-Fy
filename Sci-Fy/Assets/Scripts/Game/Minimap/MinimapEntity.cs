@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Game.Minimap
 {
     public class MinimapEntity : MonoBehaviour
     {
         [SerializeField] private Sprite _icon; //Icon to show on minimap
-        [SerializeField] private Color _color; 
+        [SerializeField] private Color _color;
         private SpriteRenderer _iconRenderer;
         private GameObject _iconObj;
-
         private static GameObject _minimapContainer;
         public static GameObject MinimapContainer{
             get{

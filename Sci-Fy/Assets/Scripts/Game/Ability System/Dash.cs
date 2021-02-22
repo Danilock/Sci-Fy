@@ -15,6 +15,7 @@ namespace Game.Ability
         private Rigidbody2D _rgb;
         private CharacterController2D _characterController;
         private Damageable _damageable;
+        private Vector2 _velocityBeforeDash;
 
         private void Awake()
         {
@@ -25,21 +26,45 @@ namespace Game.Ability
 
         public override void Ability()
         {
+            _velocityBeforeDash = _rgb.velocity;
             _damageable.SetInvulnerableByXSeconds(2f);
+
+
             StartCoroutine(HandleCharacterController());
-            _rgb.AddForce(Vector2.right * CalculateCharacterDirection() * _force, ForceMode2D.Impulse);
+
+
+            _rgb.AddForce(new Vector2(CalculateCharacterDirection().x * _force,
+                                      CalculateCharacterDirection().y * (_force / 2)
+                            ), ForceMode2D.Impulse);
+
+
             StartCoroutine(FadeEffect());
         }
 
-        private float CalculateCharacterDirection() => transform.localScale.normalized.x;
+        private Vector2 CalculateCharacterDirection()
+        {
+            Vector2 direction = new Vector2(Input.GetAxisRaw("Horizontal"),
+                                            Input.GetAxisRaw("Vertical"));
+
+            return direction;
+        }
 
         IEnumerator HandleCharacterController()
         {
             float lastGravityValue = _rgb.gravityScale;
 
+
             _characterController.CanMove = false;
+            _rgb.velocity = Vector2.zero;
+            _rgb.gravityScale = 0f;
+
+
             yield return new WaitForSeconds(.5f);
+
+
             _characterController.CanMove = true;
+            _rgb.gravityScale = lastGravityValue;
+            //_rgb.velocity = _velocityBeforeDash / 2;
         }
 
         /// <summary>
