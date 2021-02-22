@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1156336363}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 2.51
+    OrthographicSize: 1.31
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -256,7 +256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158197440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1900005, y: -9.01, z: -10}
+  m_LocalPosition: {x: 4.19, y: -9.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1612932087}
@@ -1555,7 +1555,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 2.51
+  orthographic size: 1.31
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1579,7 +1579,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1900005, y: -9.01, z: -10}
+  m_LocalPosition: {x: 4.19, y: -9.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4532,7 +4532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Dash
   Icon: {fileID: 0}
-  _cooldown: 2
+  _cooldown: 0.5
   _manaRequired: 0
   _canUse: 1
   OnUseAbility:
@@ -4550,7 +4550,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _force: 7
+  _force: 5
   _shadow:
   - {fileID: 1891884887021570966, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
   - {fileID: -8174104727354534690, guid: 104111b8d80ea5048be39a9a56dee734, type: 3}
@@ -4812,7 +4812,7 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.33
+  m_DeadZoneWidth: 0.2081312
   m_DeadZoneHeight: 0.32
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0

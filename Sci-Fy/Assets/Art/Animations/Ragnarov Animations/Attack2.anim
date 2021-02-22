@@ -21,11 +21,11 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 3669001086407300145, guid: bfa945ad5a49de24686d61576fb074c1, type: 3}
-    - time: 0.15
+    - time: 0.1
       value: {fileID: -1945689850531190422, guid: bfa945ad5a49de24686d61576fb074c1, type: 3}
-    - time: 0.28333333
+    - time: 0.18333334
       value: {fileID: -7977489325584590692, guid: bfa945ad5a49de24686d61576fb074c1, type: 3}
-    - time: 0.43333334
+    - time: 0.28333333
       value: {fileID: 1578814297237943118, guid: bfa945ad5a49de24686d61576fb074c1, type: 3}
     attribute: m_Sprite
     path: 
@@ -55,7 +55,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.45000002
+    m_StopTime: 0.3
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -82,7 +82,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.38333333
+  - time: 0.25
     functionName: EndMeleeAttack
     data: 
     objectReferenceParameter: {fileID: 0}
