@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 namespace Game.Movement
 {
@@ -11,16 +12,32 @@ namespace Game.Movement
         [SerializeField] private Transform[] _wayPoints;
         private int _currentWaypointIndex = 0;
 
+        [Header("Object Facing")]
+        [SerializeField] private bool _canFlip;
+        private CharacterController2D _ch2D;
+
         private void Start()
         {
             Move(_wayPoints[0]);
             OnReachDistance.AddListener(SelectNextWaypoint);
+            _ch2D = GetComponent<CharacterController2D>();
         }
 
         public void SelectNextWaypoint()
         {
             _currentWaypointIndex = (_currentWaypointIndex + 1) % _wayPoints.Length;
             Move(_wayPoints[_currentWaypointIndex]);
+
+            if (_canFlip)
+                Flip(_wayPoints[_currentWaypointIndex]) ;
+        }
+
+        private void Flip(Transform wayPoint)
+        {
+            if (wayPoint.transform.position.x < transform.position.x && !_ch2D.FacingRight)
+                _ch2D.Flip();
+            else if (wayPoint.transform.position.x > transform.position.x && _ch2D.FacingRight)
+                _ch2D.Flip();
         }
 
         //Drawing green lines to specify the end points of this object
