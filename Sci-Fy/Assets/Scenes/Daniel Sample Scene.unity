@@ -4394,7 +4394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: 1
-  _startHealth: 60
+  _startHealth: 5
   _startArmor: 0
   _invulnerable: 0
   OnDead:
