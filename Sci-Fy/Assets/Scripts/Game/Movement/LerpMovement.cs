@@ -10,18 +10,11 @@ namespace Game.Movement
         [Header("Lerp Movement Attributes")]
         public Transform StartPosition;
         public Transform EndPosition;
-        public bool MoveOnGameStart = false;
         [Range(0, 1)] public float Speed = .5f;
-        private float LerpPct;
+        [SerializeField, Range(0, 1)] private float LerpPct;
 
         public UnityEvent OnReachDistance;
         public UnityEvent OnStartMovement;
-
-        private void Start()
-        {
-            if (MoveOnGameStart)
-                StartCoroutine(Move());
-        }
 
         public virtual void Move(Transform endPosition)
         {
@@ -29,21 +22,20 @@ namespace Game.Movement
             EndPosition = endPosition;
             LerpPct = 0f;
             OnStartMovement.Invoke();
-
-            StartCoroutine(Move());
         }
 
-        IEnumerator Move()
+        private void Update()
         {
-            while(Vector2.Distance(EndPosition.position, transform.position) > .2f)
-            {
-                LerpPct += (.001f * Speed) / 100;
-                transform.position = Vector2.Lerp(StartPosition.position,
-                                                  EndPosition.position, LerpPct);
-                yield return null;
-            }
+            DoLerping();
+            transform.position = Vector3.Lerp(StartPosition.position, EndPosition.position, LerpPct);
+        }
 
-            OnReachDistance.Invoke();
+        private void DoLerping()
+        {
+            if (Vector2.Distance(EndPosition.position, transform.position) > 0.01f)
+                LerpPct += 0.01f * Speed * Time.deltaTime;
+            else
+                OnReachDistance.Invoke();
         }
     }
 }

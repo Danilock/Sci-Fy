@@ -18,9 +18,9 @@ namespace Game.Movement
 
         private void Start()
         {
-            Move(_wayPoints[0]);
-            OnReachDistance.AddListener(SelectNextWaypoint);
             _ch2D = GetComponent<CharacterController2D>();
+            OnReachDistance.AddListener(SelectNextWaypoint);
+            Move(_wayPoints[0]);
         }
 
         public void SelectNextWaypoint()

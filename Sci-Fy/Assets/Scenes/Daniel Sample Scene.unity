@@ -4343,6 +4343,7 @@ GameObject:
   - component: {fileID: 959938702}
   - component: {fileID: 959938703}
   - component: {fileID: 959938704}
+  - component: {fileID: 959938705}
   m_Layer: 9
   m_Name: 'Dron '
   m_TagString: Enemy
@@ -4358,7 +4359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959938697}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.56, y: -0.92, z: 0.8381171}
+  m_LocalPosition: {x: 6.57, y: -1.0756502, z: 0.3376944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1670867272}
@@ -4393,8 +4394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: 1
-  _startHealth: 5
+  _startHealth: 60
   _startArmor: 0
+  _invulnerable: 0
   OnDead:
     m_PersistentCalls:
       m_Calls:
@@ -4422,6 +4424,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamageWhenItsInvulnerable:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &959938701
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4500,10 +4508,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde41ec136a99be4d86dae7cd82f2adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
-  MoveOnGameStart: 0
+  StartPosition: {fileID: 959938698}
+  EndPosition: {fileID: 530958857}
   Speed: 1
+  LerpPct: 0
   OnReachDistance:
     m_PersistentCalls:
       m_Calls: []
@@ -4513,7 +4521,6 @@ MonoBehaviour:
   _wayPoints:
   - {fileID: 530958857}
   - {fileID: 1771029719}
-  - {fileID: 229254425}
   _canFlip: 1
 --- !u!114 &959938704
 MonoBehaviour:
@@ -4544,6 +4551,19 @@ MonoBehaviour:
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &959938705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959938697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd3b13366570044e9bfe7e01c70e948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitCanvas: {fileID: 3528772939071097817, guid: 3ee095c5cd67e5044a7938b21e6f7132, type: 3}
 --- !u!1 &1151984046
 GameObject:
   m_ObjectHideFlags: 0
@@ -4767,7 +4787,14 @@ MonoBehaviour:
   Team: 0
   _startHealth: 100
   _startArmor: 30
+  _invulnerable: 0
   OnDead:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamageWhenItsInvulnerable:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1156336370
