@@ -103,7 +103,6 @@ namespace Game.Ability {
                 if (damageable == null)
                     return;
 
-                damageable.GetComponent<SpriteRenderer>().color = Color.black;
                 damageable.TakeDamage(_laserDamage, _laserOwnerTeam);
             }
 

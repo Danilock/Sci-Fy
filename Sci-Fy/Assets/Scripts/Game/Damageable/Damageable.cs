@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(DamageableUI))]
 public class Damageable : MonoBehaviour
 {
     [Header("Team")]
@@ -15,16 +17,30 @@ public class Damageable : MonoBehaviour
     [SerializeField, Range(0, 100)] private float _startArmor = 30f;
     public float CurrentHealth { get; private set; }
     public float CurrentArmor { get; private set; }
-    public bool Invulnerable { get; private set; }
+
+    [SerializeField] private bool _invulnerable = false;
+    public bool Invulnerable
+    {
+        get => _invulnerable;
+        private set => _invulnerable = value;
+    }
     #endregion
 
-    [Header("On Dead Event")]
-    [SerializeField] UnityEvent OnDead;
+    [Header("Damageable Events")]
+    public OnDeadEvent OnDead;
+    public OnHitEvent OnTakeDamage;
+    public UnityEvent OnTakeDamageWhenItsInvulnerable;
 
-    private void Start()
+    private void Awake()
     {
         CurrentHealth = _startHealth;
         CurrentArmor = _startArmor;
+
+        if (OnTakeDamage == null)
+            OnTakeDamage = new OnHitEvent();
+
+        if (OnDead == null)
+            OnDead = new OnDeadEvent();
     }
 
     public void SetArmor(float armor)
@@ -39,15 +55,21 @@ public class Damageable : MonoBehaviour
 
     public void TakeDamage(float damageAmount, DamageSourceTeam SourceTeam)
     {
-        if (Invulnerable || SourceTeam == Team)
+        if (SourceTeam == Team)
             return;
+
+        if (Invulnerable)
+        {
+            OnTakeDamageWhenItsInvulnerable.Invoke();
+            return;
+        }
 
         CurrentHealth -= CalculateDamageByArmor(damageAmount, CurrentArmor);
 
-        if(CurrentHealth <= 0f)
-        {
-            OnDead.Invoke();
-        }
+        if (CurrentHealth <= 0f)
+            OnDead.Invoke(damageAmount);
+        else
+            OnTakeDamage.Invoke(damageAmount);
     }
 
     /// <summary>
@@ -63,7 +85,7 @@ public class Damageable : MonoBehaviour
 
         if (CurrentHealth <= 0f)
         {
-            OnDead.Invoke();
+            OnDead.Invoke(damageAmount);
         }
     }
 
@@ -84,12 +106,10 @@ public class Damageable : MonoBehaviour
         Invulnerable = false;
     }
 
-    public void InstantiateOnDead(GameObject objToInstantiate)
-    {
-        Instantiate(objToInstantiate, transform.position, Quaternion.identity);
-    }
+    public void InstantiateOnDead(GameObject objToInstantiate) => Instantiate(objToInstantiate, transform.position, Quaternion.identity);
+    [System.Serializable] public class OnHitEvent : UnityEvent<float> { }
+    [System.Serializable] public class OnDeadEvent : UnityEvent<float> { }
 }
-
 public enum DamageSourceTeam
 {
     Friendly,
