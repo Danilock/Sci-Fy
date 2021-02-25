@@ -13,7 +13,7 @@ public class DamageableUI : MonoBehaviour
     private TMP_Text _damageText;
     private Damageable _damageable;
     private GameObject[] _hitEffects = new GameObject[HIT_EFFECT_POOL_SIZE];
-    private int currentHitIndex = 0, lastHitIndex = 0;
+    private int _currentHitIndex = 0, lastHitIndex = 0;
     private float _lastDamageValue;
 
     #region OBJECT_POOL
@@ -49,10 +49,10 @@ public class DamageableUI : MonoBehaviour
     public void ActivateHitEffect(float damageReceived)
     {
         _hitEffects[lastHitIndex].SetActive(false);
-        _hitEffects[currentHitIndex].transform.position = transform.position;
-        _hitEffects[currentHitIndex].SetActive(true);
+        _hitEffects[_currentHitIndex].transform.position = transform.position;
+        _hitEffects[_currentHitIndex].SetActive(true);
 
-        _damageText = _hitEffects[currentHitIndex].GetComponentInChildren<TMP_Text>();
+        _damageText = _hitEffects[_currentHitIndex].GetComponentInChildren<TMP_Text>();
         _damageText.text = $"-{damageReceived * 10f}";
 
         //Set random color to the text
@@ -62,11 +62,21 @@ public class DamageableUI : MonoBehaviour
                                      );
 
         //Using lerp movement to move the damage text
-        LeanTween.moveY(_hitEffects[currentHitIndex], transform.position.y + 1f, 1f);
+        var seq = LeanTween.sequence();
+        seq.append(
+            LeanTween.moveY(_hitEffects[_currentHitIndex], transform.position.y + 1f, 1f)
+            );
+        
+        seq.append(() => 
+        {
+            _hitEffects[lastHitIndex].SetActive(false);
+        });
 
-        lastHitIndex = currentHitIndex;
-        currentHitIndex = (currentHitIndex + 1) % _hitEffects.Length;
+        lastHitIndex = _currentHitIndex;
+        _currentHitIndex = (_currentHitIndex + 1) % _hitEffects.Length;
     }
+
+    private void DesactivateCurrentHitEffect() => _hitEffects[_currentHitIndex].SetActive(false);
 
     private void InitializeHitDamageCanvas()
     {
