@@ -19,4 +19,4 @@ OcO is the mastermind behind the art of this game. His art helps the game to be 
 # **Prgramming** - Danilock
 Well I'm the single programmer in the project, it's a little bit hard... BUT IT'S ALSO FUN to be coding implementing game mechanics and UI systems.
 
-## If you wan't to collaborate, just download the project and start helping us to make this awesome history together!!!❤🎮🕹
+## If you want to collaborate, just download the project and start helping us to make this awesome history together!!!❤🎮🕹
