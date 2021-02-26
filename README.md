@@ -1,6 +1,6 @@
 # Welcome to the Sci-fy's Github repository!!!🎞🎮🕹
 
-# Trenia is in Danger and Ragnarov needs to save the city!
+### Trenia is in Danger and Ragnarov needs to save the city!
 Trenia's city and Ragnarov still under development. Since this is finished, bunch of people will be rocking in this game!
 
 ![GitHub Logo](/External/Review.gif)
