@@ -11,5 +11,4 @@ Well... you just need to download the repository and DONE!!!
 # Credits???
 Well I'm the only programmer in the project, it's a little bit hard... BUT IT'S ALSO FUN to be coding implementing game mechanics and UI systems.
 
-The art was developed by a prodigy, my friend OcO!
 [OcO] (https://oco.itch.io/)
