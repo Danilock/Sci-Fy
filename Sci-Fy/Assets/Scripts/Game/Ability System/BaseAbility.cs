@@ -66,5 +66,7 @@ namespace Game.Ability
         }
 
         public void SetCooldown(float newCooldown) => Cooldown = newCooldown;
+
+        public void SetAbilityState(bool state) => CanUse = state;
     }
 }

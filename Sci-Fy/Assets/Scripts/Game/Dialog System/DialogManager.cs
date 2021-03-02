@@ -34,14 +34,6 @@ namespace Game.DialogSystem
             SayNextSentence();
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                SayNextSentence();
-            }
-        }
-
         public void SayNextSentence()
         {
             if (_currentDialog == null)

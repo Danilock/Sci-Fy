@@ -10,7 +10,7 @@ public class PlayerAnimationStateHandler : StateMachineBehaviour
     {
         _player =  animator.GetComponent<PlayerController>();
 
-        _player.SetPlayerState(PlayerController.PlayerStates.Attack);
+        _player.SetPlayerState(PlayerStates.Attack);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -22,7 +22,7 @@ public class PlayerAnimationStateHandler : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _player.SetPlayerState(PlayerController.PlayerStates.Idle);
+        _player.SetPlayerState(PlayerStates.Idle);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

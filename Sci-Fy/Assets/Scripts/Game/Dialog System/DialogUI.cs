@@ -2,19 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Game.DialogSystem
 {
     public class DialogUI : MonoBehaviour
     {
         [SerializeField] private DialogManager _dialogManager;
-        [SerializeField] private Text _characterName;
-        [SerializeField] private Text _sentenceBody;
+        [SerializeField] private TMP_Text _characterName;
+        [SerializeField] private TMP_Text _sentenceBody;
+        [SerializeField] private Button _continueButton;
+
+        private CanvasGroup _dialogUI;
+        private CanvasGroup _buttonGroup;
 
         private void Awake()
         {
             if(_dialogManager == null)
                 _dialogManager = GetComponentInParent<DialogManager>();
+
+            _buttonGroup = _continueButton.GetComponent<CanvasGroup>();
+            _dialogUI = GetComponent<CanvasGroup>();
         }
 
         private void OnEnable()
@@ -48,16 +56,22 @@ namespace Game.DialogSystem
         {
             string body = "";
 
+            _continueButton.interactable = false;
+            _buttonGroup.LeanAlpha(0f, .3f);
+
             foreach(char letter in bodyText)
             {
                 body += letter;
                 _sentenceBody.text = body;
-                yield return null;
+                yield return new WaitForSeconds(.03f);
             }
+
+            _continueButton.interactable = true;
+            _buttonGroup.LeanAlpha(1f, .3f);
         }
 
         //TODO: Make an animation!
-        private void ShowDialog() => gameObject.SetActive(true);
-        private void HideDialog() => gameObject.SetActive(false);
+        private void ShowDialog() => _dialogUI.LeanAlpha(1f, .3f);
+        private void HideDialog() => _dialogUI.LeanAlpha(0f, .3f);
     }
 }
