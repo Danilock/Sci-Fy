@@ -10,6 +10,7 @@ public class PlayerController : Character<PlayerController>
     public PlayerWalkState WalkState = new PlayerWalkState();
     public PlayerJumpState JumpState = new PlayerJumpState();
     public PlayerAttackState AttackState = new PlayerAttackState();
+    public PlayerNoPlayableState NoPlayableState = new PlayerNoPlayableState();
     #endregion
 
     #region CharacterController
@@ -40,7 +41,6 @@ public class PlayerController : Character<PlayerController>
         AnimationHandler = GetComponent<PlayerAnimationHandler>();
 
         StateMachine.StateMachineOwner = this;
-        StateMachine.SetState(IdleState);
     }
 
     // Update is called once per frame
@@ -65,8 +65,33 @@ public class PlayerController : Character<PlayerController>
             case PlayerStates.Attack:
                 StateMachine.SetState(AttackState);
                 break;
+            case PlayerStates.NoPlayableState:
+                StateMachine.SetState(NoPlayableState);
+                break;
         }
     }
 
-    public enum PlayerStates { Idle, Walk, Jump, Attack }
+    public void SetPlayerState(string newPlayerState)
+    {
+        switch (newPlayerState)
+        {
+            case "Idle":
+                StateMachine.SetState(IdleState);
+                break;
+            case "Walk":
+                StateMachine.SetState(WalkState);
+                break;
+            case "Jump":
+                StateMachine.SetState(JumpState);
+                break;
+            case "Attack":
+                StateMachine.SetState(AttackState);
+                break;
+            case "NPC":
+                StateMachine.SetState(NoPlayableState);
+                break;
+        }
+    }
 }
+
+public enum PlayerStates { Idle, Walk, Jump, Attack, NoPlayableState }
