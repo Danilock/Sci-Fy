@@ -13,5 +13,9 @@ namespace Game.Events{
                 OnTriggerEnter2DHandler.Invoke();
             }
         }
+
+        private void OnDisable() {
+            OnTriggerEnter2DHandler.RemoveAllListeners();
+        }
     }
 }

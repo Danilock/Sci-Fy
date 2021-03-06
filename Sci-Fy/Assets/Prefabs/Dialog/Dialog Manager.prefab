@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 2399636243434775419}
   - component: {fileID: 2399636243434775416}
   - component: {fileID: 2399636243434775417}
+  - component: {fileID: 1977523899}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -209,6 +210,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &1977523899
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399636243434775415}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2399636243578855624
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,8 +335,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 115.107, y: -0.00011063}
-  m_SizeDelta: {x: 230.2141, y: 88.286}
+  m_AnchoredPosition: {x: 160.44122, y: -0.00011063}
+  m_SizeDelta: {x: 320.8825, y: 88.286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2399636243674240435
 CanvasRenderer:
@@ -446,7 +459,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2399636243784791190}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -639,6 +652,7 @@ GameObject:
   - component: {fileID: 2399636244220979465}
   - component: {fileID: 2399636244220979462}
   - component: {fileID: 2399636244220979467}
+  - component: {fileID: 725226699}
   m_Layer: 0
   m_Name: Dialog UI
   m_TagString: Untagged
@@ -741,7 +755,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterName: {fileID: 2399636243674240432}
   _sentenceBody: {fileID: 2399636244234553786}
-  _continueButton: {fileID: 0}
+  _continueButton: {fileID: 2399636243434775417}
+--- !u!225 &725226699
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399636244220979460}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2399636244234553784
 GameObject:
   m_ObjectHideFlags: 0
