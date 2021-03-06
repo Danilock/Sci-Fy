@@ -8,7 +8,7 @@ namespace Game.DialogSystem
 {
     public class DialogUI : MonoBehaviour
     {
-        [SerializeField] private DialogManager _dialogManager;
+        private DialogManager _dialogManager;
         [SerializeField] private TMP_Text _characterName;
         [SerializeField] private TMP_Text _sentenceBody;
         [SerializeField] private Button _continueButton;

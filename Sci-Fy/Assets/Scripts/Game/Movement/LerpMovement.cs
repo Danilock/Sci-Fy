@@ -8,34 +8,42 @@ namespace Game.Movement
     public abstract class LerpMovement : MonoBehaviour
     {
         [Header("Lerp Movement Attributes")]
-        public Transform StartPosition;
-        public Transform EndPosition;
+        [HideInInspector] public Transform StartPosition;
+        [HideInInspector] public Transform EndPosition;
         [Range(0, 1)] public float Speed = .5f;
-        [SerializeField, Range(0, 1)] private float LerpPct;
 
         public UnityEvent OnReachDistance;
         public UnityEvent OnStartMovement;
+
+        private float _startTime;
+        private float _journeyLength;
+
+        private void Start() {
+            
+            _startTime = Time.time;
+        }
 
         public virtual void Move(Transform endPosition)
         {
             StartPosition = transform;
             EndPosition = endPosition;
-            LerpPct = 0f;
             OnStartMovement.Invoke();
+
+            _journeyLength = Vector2.Distance(StartPosition.position, endPosition.position);
         }
 
         private void Update()
         {
             DoLerping();
-            transform.position = Vector3.Lerp(StartPosition.position, EndPosition.position, LerpPct);
         }
 
         private void DoLerping()
         {
-            if (Vector2.Distance(EndPosition.position, transform.position) > 0.01f)
-                LerpPct += 0.01f * Speed * Time.deltaTime;
-            else
-                OnReachDistance.Invoke();
+            float distCovered = (Time.time - _startTime) * Speed;
+
+            float fractionOfJourney = distCovered / _journeyLength;
+
+            transform.position = Vector3.Lerp(StartPosition.position, EndPosition.position, fractionOfJourney);
         }
     }
 }
