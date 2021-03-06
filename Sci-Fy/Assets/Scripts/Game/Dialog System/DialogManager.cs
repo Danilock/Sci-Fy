@@ -9,7 +9,7 @@ namespace Game.DialogSystem
     {
         #region Dialog behaviour
         public Sentence CurrentSentence { get; private set; }
-        private Dialog _currentDialog;
+        public Dialog CurrentDialog;
         private Queue<Sentence> _sentenceQueue = new Queue<Sentence>();
         #endregion
 
@@ -24,11 +24,11 @@ namespace Game.DialogSystem
 
         public void SetNewDialog(Dialog newDialog)
         {
-            _currentDialog = newDialog;
+            CurrentDialog = newDialog;
 
-            _sentenceQueue = EnqueSentence(_currentDialog);
+            _sentenceQueue = EnqueSentence(CurrentDialog);
 
-            _currentDialog.OnDialogStart.Invoke();
+            CurrentDialog.OnDialogStart.Invoke();
             OnDialogStart.Invoke();
 
             SayNextSentence();
@@ -36,7 +36,7 @@ namespace Game.DialogSystem
 
         public void SayNextSentence()
         {
-            if (_currentDialog == null)
+            if (CurrentDialog == null)
                 return;
 
             if (_sentenceQueue.Count == 0)
@@ -54,7 +54,7 @@ namespace Game.DialogSystem
         {
             Queue<Sentence> sentenceQueueInstance = new Queue<Sentence>();
 
-            foreach (Sentence sentence in _currentDialog.Sentences)
+            foreach (Sentence sentence in CurrentDialog.Sentences)
             {
                 sentenceQueueInstance.Enqueue(sentence);
             }
@@ -64,8 +64,8 @@ namespace Game.DialogSystem
 
         public void EndConversation()
         {
-            _currentDialog.OnDialogEnd.Invoke();
-            _currentDialog = null;
+            CurrentDialog.OnDialogEnd.Invoke();
+            CurrentDialog = null;
 
             OnDialogEnd.Invoke();
         }

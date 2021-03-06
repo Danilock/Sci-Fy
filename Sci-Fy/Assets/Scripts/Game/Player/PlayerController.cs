@@ -41,6 +41,7 @@ public class PlayerController : Character<PlayerController>
         AnimationHandler = GetComponent<PlayerAnimationHandler>();
 
         StateMachine.StateMachineOwner = this;
+        StateMachine.SetState(IdleState);
     }
 
     // Update is called once per frame

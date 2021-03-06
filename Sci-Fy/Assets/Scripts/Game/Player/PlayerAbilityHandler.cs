@@ -11,21 +11,20 @@ public class PlayerAbilityHandler : MonoBehaviour
     [SerializeField] private bool _canUseAbilities = true;
     public bool CanUseAbilities
     {
-        get
-        {
-            return _canUseAbilities;
-        }
-        set
-        {
-            _canUseAbilities = value;
-        }
+        get => _canUseAbilities;
+        set => _canUseAbilities = value;
     }
     #endregion
-
+    
     private Dash _dashAbility;
     private Laser _laserAbility;
     [SerializeField] private MeleeWeapon _meleeWeapon;
-
+    [SerializeField] private bool _canUseMeleeAttacks;
+    public bool CanUseMeleeAttacks
+    {
+        get => _canUseMeleeAttacks;
+        set => _canUseMeleeAttacks = value;
+    }
     int _meleeAttackIndex = 1;
 
     private void Start()
@@ -67,6 +66,9 @@ public class PlayerAbilityHandler : MonoBehaviour
 
     private void HandleMeleeAttack()
     {
+        if(!CanUseMeleeAttacks)
+            return;
+
         if (CheckIfPlayerIsInIdleOrWalkState() || _player.StateMachine.CurrentState == _player.JumpState)
         {
             _player.AnimationHandler.TriggerAttackAnimation(_meleeAttackIndex);

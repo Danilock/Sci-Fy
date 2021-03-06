@@ -7,6 +7,11 @@ namespace Game.DialogSystem
 {
     public class Dialog : MonoBehaviour
     {
+        [SerializeField] private bool _ignoreScaleTime = false;
+        public bool IgnoreScaleTime{
+            get => _ignoreScaleTime;
+            set => _ignoreScaleTime = value;
+        }
         public UnityEvent OnDialogStart, OnDialogEnd;
         public Sentence[] Sentences;
     }

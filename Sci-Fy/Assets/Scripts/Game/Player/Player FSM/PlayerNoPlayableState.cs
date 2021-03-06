@@ -4,17 +4,17 @@ using UnityEngine;
 using Game.StateMachine;
 public class PlayerNoPlayableState : IState<PlayerController>
 {
-    public void EnterState(PlayerController type)
+    public void EnterState(PlayerController player)
+    {
+        player.AnimationHandler.TriggerIdleAnimation();
+    }
+
+    public void ExitState(PlayerController player)
     {
         
     }
 
-    public void ExitState(PlayerController type)
-    {
-        
-    }
-
-    public void TickState(PlayerController type)
+    public void TickState(PlayerController player)
     {
         
     }

@@ -9,14 +9,5 @@ namespace Game.Movement {
         {
             base.Move(endPosition);
         }
-
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.green;
-
-            Gizmos.DrawLine(StartPosition.position, EndPosition.position);
-            Gizmos.DrawSphere(StartPosition.position, .3f);
-            Gizmos.DrawSphere(EndPosition.position, .3f);
-        }
     }
 }

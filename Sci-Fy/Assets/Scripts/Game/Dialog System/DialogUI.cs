@@ -30,9 +30,9 @@ namespace Game.DialogSystem
             if (_dialogManager == null)
                 return;
 
+            _dialogManager.OnSaySentence.AddListener(UpdateDialogUI);
             _dialogManager.OnDialogStart.AddListener(ShowDialog);
             _dialogManager.OnDialogEnd.AddListener(HideDialog);
-            _dialogManager.OnSaySentence.AddListener(UpdateDialogUI);
         }
 
         private void OnDisable()
@@ -40,9 +40,9 @@ namespace Game.DialogSystem
             if (_dialogManager == null)
                 return;
 
+            _dialogManager.OnSaySentence.RemoveListener(UpdateDialogUI);
             _dialogManager.OnDialogStart.RemoveListener(ShowDialog);
             _dialogManager.OnDialogEnd.RemoveListener(HideDialog);
-            _dialogManager.OnSaySentence.RemoveListener(UpdateDialogUI);
         }
 
         public void UpdateDialogUI()
@@ -63,7 +63,11 @@ namespace Game.DialogSystem
             {
                 body += letter;
                 _sentenceBody.text = body;
-                yield return new WaitForSeconds(.03f);
+
+                if(_dialogManager.CurrentDialog.IgnoreScaleTime)
+                    yield return new WaitForSecondsRealtime(.03f);
+                else
+                    yield return new WaitForSeconds(.03f);
             }
 
             _continueButton.interactable = true;
@@ -71,7 +75,15 @@ namespace Game.DialogSystem
         }
 
         //TODO: Make an animation!
-        private void ShowDialog() => _dialogUI.LeanAlpha(1f, .3f);
-        private void HideDialog() => _dialogUI.LeanAlpha(0f, .3f);
+        private void ShowDialog() => DialogVisible(1f, .3f, _dialogManager.CurrentDialog.IgnoreScaleTime);
+        private void HideDialog() => DialogVisible(0f, .3f, _dialogManager.CurrentDialog.IgnoreScaleTime);
+
+        private void DialogVisible(float to, float time, bool ignoreScaleTime)
+        {
+            if(ignoreScaleTime)
+                LeanTween.dtManual = Time.unscaledDeltaTime;
+
+            _dialogUI.LeanAlpha(to, time).useManualTime = ignoreScaleTime;
+        }
     }
 }
