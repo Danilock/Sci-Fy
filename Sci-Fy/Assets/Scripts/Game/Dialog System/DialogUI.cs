@@ -75,10 +75,10 @@ namespace Game.DialogSystem
         }
 
         //TODO: Make an animation!
-        private void ShowDialog() => DialogVisible(1f, .3f, _dialogManager.CurrentDialog.IgnoreScaleTime);
-        private void HideDialog() => DialogVisible(0f, .3f, _dialogManager.CurrentDialog.IgnoreScaleTime);
+        public void ShowDialog() => DialogVisibilityHandler(1f, .3f, _dialogManager.CurrentDialog.IgnoreScaleTime);
+        public void HideDialog() => DialogVisibilityHandler(0f, .3f, _dialogManager.CurrentDialog.IgnoreScaleTime);
 
-        private void DialogVisible(float to, float time, bool ignoreScaleTime)
+        private void DialogVisibilityHandler(float to, float time, bool ignoreScaleTime)
         {
             if(ignoreScaleTime)
                 LeanTween.dtManual = Time.unscaledDeltaTime;

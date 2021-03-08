@@ -6,16 +6,16 @@ using UnityEngine.Events;
 namespace Game.Events{
     public class Event_OnTriggerEnter2D : MonoBehaviour
     {
-        [SerializeField] private string otherTagTarget;
-        [SerializeField] private UnityEvent OnTriggerEnter2DHandler;
+        [SerializeField] private string _tag;
+        [SerializeField] private UnityEvent _onTriggerEnter2D;
         private void OnTriggerEnter2D(Collider2D other) {
-            if(other.CompareTag(otherTagTarget)){
-                OnTriggerEnter2DHandler.Invoke();
+            if(other.CompareTag(_tag)){
+                _onTriggerEnter2D.Invoke();
             }
         }
 
         private void OnDisable() {
-            OnTriggerEnter2DHandler.RemoveAllListeners();
+            _onTriggerEnter2D.RemoveAllListeners();
         }
     }
 }
