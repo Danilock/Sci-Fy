@@ -18,13 +18,20 @@ namespace Game.Movement
         private float _startTime;
         private float _journeyLength;
 
-        private void Start() {
+        private float distCovered;
+        private float fractionOfJourney; 
+
+        public virtual void Start() {
             
             _startTime = Time.time;
         }
 
         public virtual void Move(Transform endPosition)
         {
+            fractionOfJourney = 0f;
+            distCovered = 0f;
+            _startTime = Time.time;
+
             StartPosition = transform;
             EndPosition = endPosition;
             OnStartMovement.Invoke();
@@ -39,11 +46,14 @@ namespace Game.Movement
 
         private void DoLerping()
         {
-            float distCovered = (Time.time - _startTime) * Speed;
+            distCovered = (Time.time - _startTime) * Speed;
 
-            float fractionOfJourney = distCovered / _journeyLength;
+            fractionOfJourney = distCovered / _journeyLength;
 
             transform.position = Vector3.Lerp(StartPosition.position, EndPosition.position, fractionOfJourney);
+
+            if(Vector3.Distance(StartPosition.position, EndPosition.position) < .2f)
+                OnReachDistance.Invoke();
         }
     }
 }

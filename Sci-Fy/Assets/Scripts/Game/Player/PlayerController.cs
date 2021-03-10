@@ -35,6 +35,8 @@ public class PlayerController : Character<PlayerController>
 
     public PlayerActions Input {get; set;}
 
+    public Vector2 Move;
+
     private void Awake() {
         Input = new PlayerActions();
         Input.Enable();
@@ -55,6 +57,8 @@ public class PlayerController : Character<PlayerController>
     void Update()
     {
         StateMachine.CurrentState.TickState(this);
+
+        Move = Input.PlayerControls.Movement.ReadValue<Vector2>();
     }
 
     public void SetPlayerState(PlayerStates newPlayerState)
