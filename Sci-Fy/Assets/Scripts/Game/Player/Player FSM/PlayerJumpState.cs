@@ -17,7 +17,7 @@ public class PlayerJumpState : IState<PlayerController>
 
     public void TickState(PlayerController player)
     {
-        player.CharacterController.Move(Input.GetAxisRaw("Horizontal"), false, false);
+        player.CharacterController.Move(player.Move.x, false, false);
 
         if (player.Rigidbody.velocity.y <= 1f && player.CharacterController.IsGrounded)
         {

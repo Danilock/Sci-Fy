@@ -32,21 +32,9 @@ public class PlayerAbilityHandler : MonoBehaviour
         _player = GetComponent<PlayerController>();
         _dashAbility = GetComponent<Dash>();
         _laserAbility = GetComponent<Laser>();
-    }
 
-    private void Update()
-    {
-        if (!CanUseAbilities)
-            return;
-
-        if (Input.GetButtonDown("Dash"))
-            HandleDashInput();
-
-        else if (Input.GetButtonDown("Laser"))
-            HandleLaserInput();
-
-        else if(Input.GetButtonDown("Melee Attack"))
-            HandleMeleeAttack();
+        
+        _player.Input.PlayerControls.Dash.performed += _ => HandleDashInput();
     }
 
     private void HandleDashInput()

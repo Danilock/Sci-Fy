@@ -33,6 +33,13 @@ public class PlayerController : Character<PlayerController>
     #endregion
     [HideInInspector] public PlayerAnimationHandler AnimationHandler;
 
+    public PlayerActions Input {get; set;}
+
+    private void Awake() {
+        Input = new PlayerActions();
+        Input.Enable();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

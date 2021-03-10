@@ -17,16 +17,16 @@ public class PlayerWalkState : IState<PlayerController>
 
     public void TickState(PlayerController player)
     {
-        player.CharacterController.Move(Input.GetAxisRaw("Horizontal"), false, false);
+        player.CharacterController.Move(player.Move.x, false, false);
 
         if (player.Rigidbody.velocity.magnitude < 0.01f)
         {
             player.StateMachine.SetState(player.IdleState);
         }
-        else if (Input.GetButtonDown("Jump"))
+        else if (player.Input.PlayerControls.Jump.triggered)
         {
             player.CharacterController.Move(
-                Input.GetAxisRaw("Horizontal"),
+                player.Move.x,
                 false,
                 true
                 );
