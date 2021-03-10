@@ -17,11 +17,14 @@ namespace Game.Ability
         private Damageable _damageable;
         private Vector2 _velocityBeforeDash;
 
+        private PlayerController _player;
+
         private void Awake()
         {
             _rgb = GetComponent<Rigidbody2D>();
             _characterController = GetComponent<CharacterController2D>();
             _damageable = GetComponent<Damageable>();
+            _player = GetComponent<PlayerController>();
         }
 
         public override void Ability()
@@ -43,8 +46,8 @@ namespace Game.Ability
 
         private Vector2 CalculateCharacterDirection()
         {
-            Vector2 direction = new Vector2(Input.GetAxisRaw("Horizontal"),
-                                            Input.GetAxisRaw("Vertical"));
+            Vector2 direction = new Vector2(_player.Input.PlayerControls.Movement.ReadValue<Vector2>().x,
+                                            _player.Input.PlayerControls.Movement.ReadValue<Vector2>().y);
 
             return direction;
         }

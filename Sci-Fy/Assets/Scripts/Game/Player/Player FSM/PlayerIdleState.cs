@@ -18,14 +18,14 @@ public class PlayerIdleState : IState<PlayerController>
 
     public void TickState(PlayerController player)
     {
-        player.CharacterController.Move(Input.GetAxisRaw("Horizontal"), false, false);
+        player.CharacterController.Move(player.Move.x, false, false);
 
 
-        if (Input.GetButtonDown("Jump") || !player.CharacterController.IsGrounded)
+        if (player.Input.PlayerControls.Jump.triggered || !player.CharacterController.IsGrounded)
         {
             //Making jump 
             player.CharacterController.Move(
-                Input.GetAxisRaw("Horizontal"),
+                player.Move.x,
                 false,
                 true
                 );
