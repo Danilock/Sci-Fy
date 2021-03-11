@@ -14,5 +14,9 @@ namespace Game.DialogSystem
         }
         public UnityEvent OnDialogStart, OnDialogEnd;
         public Sentence[] Sentences;
+
+        public void StartConversation(){
+            FindObjectOfType<DialogManager>().SetNewDialog(this);
+        }
     }
 }

@@ -30,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613265229280746665}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.57, y: -1.0756502, z: 0.3376944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -150,9 +150,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.005284786, y: -0.07927573}
   serializedVersion: 2
-  m_Radius: 0.4296875
+  m_Radius: 0.24999583
 --- !u!114 &1613265229280746670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,14 +182,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPosition: {fileID: 1613265229280746666}
   EndPosition: {fileID: 0}
-  Speed: 1
-  LerpPct: 0
+  Speed: 40.1
   OnReachDistance:
     m_PersistentCalls:
       m_Calls: []
   OnStartMovement:
     m_PersistentCalls:
       m_Calls: []
+  _isStopped: 0
   _wayPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_AirControl: 0
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_GroundCheck: {fileID: 0}
   m_CeilingCheck: {fileID: 0}
   m_CrouchDisableCollider: {fileID: 0}

@@ -10,12 +10,18 @@ public class Timer : MonoBehaviour
     public UnityEvent OnTimerEnd;
     public UnityEvent OnSecondTick;//Event is called every second
     [SerializeField, Range(1, 2)] private float _timerSpeedModifier = 1;
+    [SerializeField] private bool _executeOnStart;
     bool isTicking = false;
 
     public float Minutes { get => _minutes; }
     public float Seconds { get => _seconds; }
 
     private TimerState _currentTimerState;
+
+    private void Start() {
+        if(_executeOnStart)
+            StartTicking();
+    }
 
     // Update is called once per frame
     void Update()

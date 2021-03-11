@@ -22,7 +22,7 @@ public class Obstacle : MonoBehaviour
 
         if (collision.gameObject.CompareTag(_targetTag))
         {
-            DoDamage(collision);
+            DoDamage(collision.gameObject.GetComponent<Damageable>());
         }
     }
 
@@ -33,27 +33,15 @@ public class Obstacle : MonoBehaviour
 
         if (other.gameObject.CompareTag(_targetTag))
         {
-            DoDamage(other);
+            DoDamage(other.GetComponent<Damageable>());
         }
     }
 
-    private void DoDamage(Collider2D collision)
+    private void DoDamage(Damageable damageable)
     {
-        Damageable collisionDamageable = collision.gameObject.GetComponent<Damageable>();
-
-        if (collisionDamageable == null)
+        if (damageable == null)
             return;
 
-        collisionDamageable.TakeDamage(_damageAmount, _sourceTeam);
-    }
-
-    private void DoDamage(Collision2D collision)
-    {
-        Damageable collisionDamageable = collision.gameObject.GetComponent<Damageable>();
-
-        if (collisionDamageable == null)
-            return;
-
-        collisionDamageable.TakeDamage(_damageAmount, _sourceTeam);
+        damageable.TakeDamage(_damageAmount, _sourceTeam);
     }
 }

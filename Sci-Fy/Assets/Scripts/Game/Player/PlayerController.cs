@@ -40,11 +40,7 @@ public class PlayerController : Character<PlayerController>
     private void Awake() {
         Input = new PlayerActions();
         Input.Enable();
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
         CharacterController = GetComponent<CharacterController2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         AnimationHandler = GetComponent<PlayerAnimationHandler>();

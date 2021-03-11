@@ -205,6 +205,17 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fe93eeb8-2ab1-4deb-8259-785283cafb4b"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""11357347-c8c8-4e39-a23c-9ba8631e1d98"",
                     ""path"": ""<DualShockGamepad>/buttonEast"",
                     ""interactions"": """",

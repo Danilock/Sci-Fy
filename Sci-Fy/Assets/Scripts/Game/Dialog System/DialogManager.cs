@@ -65,9 +65,9 @@ namespace Game.DialogSystem
         public void EndConversation()
         {
             CurrentDialog.OnDialogEnd.Invoke();
-            CurrentDialog = null;
 
             OnDialogEnd.Invoke();
+            CurrentDialog = null;
         }
     }
 }
