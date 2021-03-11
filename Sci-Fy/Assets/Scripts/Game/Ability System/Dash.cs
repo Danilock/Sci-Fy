@@ -49,6 +49,9 @@ namespace Game.Ability
             Vector2 direction = new Vector2(_player.Input.PlayerControls.Movement.ReadValue<Vector2>().x,
                                             _player.Input.PlayerControls.Movement.ReadValue<Vector2>().y);
 
+            if(direction.x == 0f && direction.y == 0f)
+                direction = new Vector2(transform.localScale.x, 0f);
+
             return direction;
         }
 

@@ -34,7 +34,7 @@ public class PlayerAbilityHandler : MonoBehaviour
         _laserAbility = GetComponent<Laser>();
 
         
-        _player.Input.PlayerControls.Dash.performed += _ => HandleDashInput();
+        SetupAbilityInput();
     }
 
     private void HandleDashInput()
@@ -78,6 +78,13 @@ public class PlayerAbilityHandler : MonoBehaviour
     {
         return _player.StateMachine.CurrentState == _player.IdleState ||
                _player.StateMachine.CurrentState == _player.WalkState;
+    }
+
+    private void SetupAbilityInput()
+    {
+        _player.Input.PlayerControls.Dash.performed += _ => HandleDashInput();
+        _player.Input.PlayerControls.Laser.performed += _ => HandleLaserInput();
+        _player.Input.PlayerControls.MeleeAttack.performed += _ => HandleMeleeAttack();
     }
 
     public void StartMeleeAttack() => _meleeWeapon.StartAttack();

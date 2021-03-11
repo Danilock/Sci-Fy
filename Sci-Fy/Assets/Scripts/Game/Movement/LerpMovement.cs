@@ -10,40 +10,57 @@ namespace Game.Movement
         [Header("Lerp Movement Attributes")]
         [HideInInspector] public Transform StartPosition;
         [HideInInspector] public Transform EndPosition;
-        [Range(0, 1)] public float Speed = .5f;
+        [Range(0, 100)] public float Speed = .5f;
 
         public UnityEvent OnReachDistance;
         public UnityEvent OnStartMovement;
 
         private float _startTime;
-        private float _journeyLength;
 
-        private void Start() {
+        private float _lerpPct;
+
+        [SerializeField] private bool _isStopped;
+
+        public bool IsStopped {
+            get => _isStopped;
+            set{
+                _isStopped = value;
+
+                if(_isStopped)
+                    _startTime = Time.time;
+            }
+        }
+
+        public virtual void Start() {
             
             _startTime = Time.time;
         }
 
         public virtual void Move(Transform endPosition)
         {
+            _lerpPct = 0f;
+            _startTime = Time.time;
+
             StartPosition = transform;
             EndPosition = endPosition;
             OnStartMovement.Invoke();
-
-            _journeyLength = Vector2.Distance(StartPosition.position, endPosition.position);
         }
 
         private void Update()
         {
-            DoLerping();
+            if(!_isStopped){
+                DoLerping();
+            }
         }
 
         private void DoLerping()
         {
-            float distCovered = (Time.time - _startTime) * Speed;
+           _lerpPct += (Speed / 1000) * Time.deltaTime;
 
-            float fractionOfJourney = distCovered / _journeyLength;
+            transform.position = Vector3.Lerp(StartPosition.position, EndPosition.position, _lerpPct);
 
-            transform.position = Vector3.Lerp(StartPosition.position, EndPosition.position, fractionOfJourney);
+            if(Vector3.Distance(StartPosition.position, EndPosition.position) < .2f)
+                OnReachDistance.Invoke();
         }
     }
 }

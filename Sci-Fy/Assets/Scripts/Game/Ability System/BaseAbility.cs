@@ -29,14 +29,8 @@ namespace Game.Ability
 
         [SerializeField] bool _canUse = true;
         public bool CanUse {
-            get 
-            { 
-                return _canUse; 
-            } 
-            private set 
-            { 
-                _canUse = value; 
-            } 
+            get => _canUse;
+            set => _canUse = value;
         }
 
         public UnityEvent OnUseAbility;

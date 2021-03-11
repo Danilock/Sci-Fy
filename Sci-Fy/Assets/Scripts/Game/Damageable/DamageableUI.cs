@@ -53,7 +53,7 @@ public class DamageableUI : MonoBehaviour
         _hitEffects[_currentHitIndex].SetActive(true);
 
         _damageText = _hitEffects[_currentHitIndex].GetComponentInChildren<TMP_Text>();
-        _damageText.text = $"-{damageReceived * 10f}";
+        _damageText.text = $"{damageReceived}";
 
         //Set random color to the text
         _damageText.color = new Color(Random.Range(0f, 1f),
