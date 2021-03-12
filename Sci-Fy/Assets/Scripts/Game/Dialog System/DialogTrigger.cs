@@ -14,9 +14,11 @@ namespace Game.DialogSystem{
         [Header("Time Changer")]
         [SerializeField] private bool _changeTimeScaleWhenTrigger;
         [SerializeField] private float _newScaleValue;
+        private PlayerController _player;
 
         private void Start() {
             _dgManager = FindObjectOfType<DialogManager>();
+            _player = FindObjectOfType<PlayerController>();
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
@@ -24,7 +26,7 @@ namespace Game.DialogSystem{
                 _dgManager.SetNewDialog(_dialogToInitiate);
 
                 if(_stopPlayer)
-                    FindObjectOfType<PlayerController>().SetPlayerState("NPC");
+                    _player.SetPlayerState("NPC");
 
                 if(_changeTimeScaleWhenTrigger)
                     Time.timeScale = _newScaleValue;
