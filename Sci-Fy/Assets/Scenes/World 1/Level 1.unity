@@ -1638,6 +1638,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 674f9b8c-b104-4242-8b7d-ad3b5142fdf1
     m_ActionName: Player Controls/Melee Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eabeb5df-040e-4c49-9859-c00a5d6e4f2d
+    m_ActionName: Player Controls/Mouse Position[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player Controls
@@ -2350,7 +2354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5360081727825896817, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
       propertyPath: _canUse
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5360081727825896823, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
       propertyPath: _canUse
