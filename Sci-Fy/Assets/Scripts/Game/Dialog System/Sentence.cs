@@ -11,5 +11,6 @@ namespace Game.DialogSystem
         public string Character;
         [TextArea] public string Body;
         public UnityEvent OnSaySentence;
+        public DialogPosition Position;
     }
 }

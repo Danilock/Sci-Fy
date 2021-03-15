@@ -11,17 +11,14 @@ namespace Game.DialogSystem
         [SerializeField] private DialogManager _dialogManager;
         [SerializeField] private TMP_Text _characterName;
         [SerializeField] private TMP_Text _sentenceBody;
-        [SerializeField] private Button _continueButton;
 
         private CanvasGroup _dialogUI;
-        private CanvasGroup _buttonGroup;
 
         private void Awake()
         {
             if(_dialogManager == null)
                 _dialogManager = GetComponentInParent<DialogManager>();
 
-            _buttonGroup = _continueButton.GetComponent<CanvasGroup>();
             _dialogUI = GetComponent<CanvasGroup>();
         }
 
@@ -47,6 +44,8 @@ namespace Game.DialogSystem
 
         public void UpdateDialogUI()
         {
+            transform.position = _dialogManager.CurrentSentence.Position.transform.position;
+
             _characterName.text = _dialogManager.CurrentSentence.Character;
 
             StartCoroutine(ShowBodySentenceLetterByLetter(_dialogManager.CurrentSentence.Body));
@@ -55,9 +54,6 @@ namespace Game.DialogSystem
         IEnumerator ShowBodySentenceLetterByLetter(string bodyText)
         {
             string body = "";
-
-            _continueButton.interactable = false;
-            _buttonGroup.LeanAlpha(0f, .3f);
 
             foreach(char letter in bodyText)
             {
@@ -69,9 +65,6 @@ namespace Game.DialogSystem
                 else
                     yield return new WaitForSeconds(.03f);
             }
-
-            _continueButton.interactable = true;
-            _buttonGroup.LeanAlpha(1f, .3f);
         }
 
         //TODO: Make an animation!

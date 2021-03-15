@@ -57,6 +57,14 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Mouse Position"",
+                    ""type"": ""Value"",
+                    ""id"": ""eabeb5df-040e-4c49-9859-c00a5d6e4f2d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -235,6 +243,28 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                     ""action"": ""Melee Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c6261a1-65b8-4c2e-88a4-1569ce5217eb"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36cee1ef-ad66-4fe1-a08a-4a82c6c1ed6d"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +278,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
         m_PlayerControls_Jump = m_PlayerControls.FindAction("Jump", throwIfNotFound: true);
         m_PlayerControls_Laser = m_PlayerControls.FindAction("Laser", throwIfNotFound: true);
         m_PlayerControls_MeleeAttack = m_PlayerControls.FindAction("Melee Attack", throwIfNotFound: true);
+        m_PlayerControls_MousePosition = m_PlayerControls.FindAction("Mouse Position", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -302,6 +333,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_Jump;
     private readonly InputAction m_PlayerControls_Laser;
     private readonly InputAction m_PlayerControls_MeleeAttack;
+    private readonly InputAction m_PlayerControls_MousePosition;
     public struct PlayerControlsActions
     {
         private @PlayerActions m_Wrapper;
@@ -311,6 +343,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerControls_Jump;
         public InputAction @Laser => m_Wrapper.m_PlayerControls_Laser;
         public InputAction @MeleeAttack => m_Wrapper.m_PlayerControls_MeleeAttack;
+        public InputAction @MousePosition => m_Wrapper.m_PlayerControls_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -335,6 +368,9 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 @MeleeAttack.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMeleeAttack;
                 @MeleeAttack.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMeleeAttack;
                 @MeleeAttack.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMeleeAttack;
+                @MousePosition.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -354,6 +390,9 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 @MeleeAttack.started += instance.OnMeleeAttack;
                 @MeleeAttack.performed += instance.OnMeleeAttack;
                 @MeleeAttack.canceled += instance.OnMeleeAttack;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
@@ -365,5 +404,6 @@ public class @PlayerActions : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnLaser(InputAction.CallbackContext context);
         void OnMeleeAttack(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }
