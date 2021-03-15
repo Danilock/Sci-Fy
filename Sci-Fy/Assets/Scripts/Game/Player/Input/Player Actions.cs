@@ -246,6 +246,17 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""9c6261a1-65b8-4c2e-88a4-1569ce5217eb"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""36cee1ef-ad66-4fe1-a08a-4a82c6c1ed6d"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",

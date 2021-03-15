@@ -716,11 +716,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581765757627334430, guid: 012c1e6049d458a49be8fb7a22deb2e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.0030127
+      value: 5.6594114
       objectReference: {fileID: 0}
     - target: {fileID: 3581765757627334430, guid: 012c1e6049d458a49be8fb7a22deb2e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.932877
+      value: -9.120967
       objectReference: {fileID: 0}
     - target: {fileID: 3581765757627334430, guid: 012c1e6049d458a49be8fb7a22deb2e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -752,7 +752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581765757627334625, guid: 012c1e6049d458a49be8fb7a22deb2e1, type: 3}
       propertyPath: orthographic size
-      value: 2.33
+      value: 2.14
       objectReference: {fileID: 0}
     - target: {fileID: 3581765757627334625, guid: 012c1e6049d458a49be8fb7a22deb2e1, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -764,7 +764,7 @@ PrefabInstance:
       objectReference: {fileID: 28586380}
     - target: {fileID: 3581765757887881564, guid: 012c1e6049d458a49be8fb7a22deb2e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.659257
+      value: 3.1189995
       objectReference: {fileID: 0}
     - target: {fileID: 3581765757887881564, guid: 012c1e6049d458a49be8fb7a22deb2e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -784,7 +784,7 @@ PrefabInstance:
       objectReference: {fileID: 1949252547}
     - target: {fileID: 3581765757887881567, guid: 012c1e6049d458a49be8fb7a22deb2e1, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 2.33
+      value: 2.14
       objectReference: {fileID: 0}
     - target: {fileID: 3581765758544262246, guid: 012c1e6049d458a49be8fb7a22deb2e1, type: 3}
       propertyPath: m_RootOrder
@@ -954,64 +954,6 @@ MonoBehaviour:
   _image: {fileID: 0}
   X: 0.05
   Y: 0
---- !u!1 &486315166
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 486315167}
-  - component: {fileID: 486315168}
-  m_Layer: 8
-  m_Name: Not Playable State
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &486315167
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486315166}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1949252547}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &486315168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486315166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfe4fa3d5a5d68f439e9d90e8f2ef43d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 906299715}
-        m_TargetAssemblyTypeName: PlayerController, Scripts
-        m_MethodName: SetPlayerState
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: NPC
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &602167717 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1249219679154569438, guid: a2430066ff8617b418843e9826568517, type: 3}
@@ -1577,76 +1519,6 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!1 &906299704 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5360081727825896809, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
-  m_PrefabInstance: {fileID: 1695977022}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &906299715 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5360081727825896819, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
-  m_PrefabInstance: {fileID: 1695977022}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906299704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b3442efbd5c11743825705ac55a973d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &906299719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906299704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: b40151fc3c3ebd5478e88ae4134b80b6, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0ef7f2ba-91e2-462b-b30f-ae36c5f5aff1
-    m_ActionName: Player Controls/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f53ac921-25bd-421d-a3ce-d3e1bfbb1167
-    m_ActionName: Player Controls/Dash[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c2c4e0e3-4a5c-4ba6-964a-dbd2c4246847
-    m_ActionName: Player Controls/Jump[/Keyboard/w]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c7a09add-e541-4ccf-8cb8-fc0815b7b35f
-    m_ActionName: Player Controls/Laser[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 674f9b8c-b104-4242-8b7d-ad3b5142fdf1
-    m_ActionName: Player Controls/Melee Attack[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: eabeb5df-040e-4c49-9859-c00a5d6e4f2d
-    m_ActionName: Player Controls/Mouse Position[/Mouse/position]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player Controls
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1071377845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,25 +2148,13 @@ PrefabInstance:
       propertyPath: OnStart.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5360081727342988824, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
-      propertyPath: m_ImpulseDefinition.m_RawSignal
-      value: 
-      objectReference: {fileID: 11400000, guid: dd0cbd3a68925d74ca1aadd5f1e59952, type: 2}
-    - target: {fileID: 5360081727342988824, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
-      propertyPath: m_ImpulseDefinition.m_AmplitudeGain
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5360081727342988824, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
-      propertyPath: m_ImpulseDefinition.m_FrequencyGain
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5360081727825896808, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5360081727825896808, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.7007427
+      value: -7.241
       objectReference: {fileID: 0}
     - target: {fileID: 5360081727825896808, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2338,7 +2198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5360081727825896815, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
       propertyPath: m_JumpForce
-      value: 300
+      value: 330
       objectReference: {fileID: 0}
     - target: {fileID: 5360081727825896815, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
       propertyPath: m_SpeedMultiplier
@@ -2346,11 +2206,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5360081727825896816, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
       propertyPath: _canUseAbilities
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5360081727825896816, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
       propertyPath: _canUseMeleeAttacks
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5360081727825896817, guid: e8891ac5653ebb841a7a8c66db1ca8b4, type: 3}
       propertyPath: _canUse
@@ -3627,13 +3487,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1853340228}
     m_Modifications:
+    - target: {fileID: 382189215, guid: 0f91869d49029b44db9f9dcff30c2020, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 241037255}
     - target: {fileID: 2399636243784791190, guid: 0f91869d49029b44db9f9dcff30c2020, type: 3}
       propertyPath: m_Name
       value: Dialog Manager
       objectReference: {fileID: 0}
     - target: {fileID: 2399636243784791193, guid: 0f91869d49029b44db9f9dcff30c2020, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2399636243784791193, guid: 0f91869d49029b44db9f9dcff30c2020, type: 3}
       propertyPath: m_LocalPosition.x
